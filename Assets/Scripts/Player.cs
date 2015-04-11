@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
 	bool right = true;
 	bool jumpAllowed = false;
+	bool fallEnabled = false;
 	float feetPos;
 
 	Transform sprite;
@@ -45,6 +46,8 @@ public class Player : MonoBehaviour
 			Jetpack ();
 		if(Input.GetButtonDown ("Jump") && jumpAllowed)
 			Jump ();
+		if(Input.GetButtonUp ("Jump") && fallEnabled)
+			StopJump ();
 
 		// Moving platforms support
 		if (activePlatform != null) {
@@ -76,11 +79,13 @@ public class Player : MonoBehaviour
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
 		rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+		fallEnabled = true;
 	}
 
 	void StopJump()
 	{
 		rb.velocity = new Vector2(rb.velocity.x, 0);
+		fallEnabled = false;
 	}
 
 	void Jetpack()
