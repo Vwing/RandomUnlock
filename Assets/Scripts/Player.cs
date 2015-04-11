@@ -9,16 +9,19 @@ public class Player : MonoBehaviour
 
 	bool right = true;
 	bool jumpAllowed = false;
+	//float feetPos;
 
 	Transform sprite;
 	Rigidbody2D rb;
 	Animator anim;
+	GameObject activePlatform = null;
 
 	void Start () 
 	{
 		sprite = transform.FindChild("Sprite");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
+		//feetPos = GetComponent<BoxCollider2D>().bounds.extents.y;
 	}
 
 	void Update ()
@@ -59,14 +62,41 @@ public class Player : MonoBehaviour
 		rb.AddForce(Vector3.up * jetForce);
 	}
 
+//	void MoveWithPlatform()
+//	{
+//		if (activePlatform != null) {
+//			var newGlobalPlatformPoint = activePlatform.TransformPoint(activeLocalPlatformPoint);
+//			var moveDistance = (newGlobalPlatformPoint - activeGlobalPlatformPoint);
+//			if (moveDistance != Vector3.zero)
+//				controller.Move(moveDistance);
+//			lastPlatformVelocity = (newGlobalPlatformPoint - activeGlobalPlatformPoint) / Time.deltaTime;
+//			
+//			// If you want to support moving platform rotation as well:
+//			var newGlobalPlatformRotation = activePlatform.rotation * activeLocalPlatformRotation;
+//			var rotationDiff = newGlobalPlatformRotation * Quaternion.Inverse(activeGlobalPlatformRotation);
+//			
+//			// Prevent rotation of the local up vector
+//			rotationDiff = Quaternion.FromToRotation(rotationDiff * transform.up, transform.up) * rotationDiff;
+//			
+//			transform.rotation = rotationDiff * transform.rotation;
+//		}
+//		else {
+//			lastPlatformVelocity = Vector3.zero;
+//		}
+//	}
+	
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
+		if(other.gameObject.tag == "MovablePlatform")
+			activePlatform = other.gameObject;
 	}
 
 	void OnCollisionExit2D(Collision2D other)
 	{
 		jumpAllowed = false;
+		if(other.gameObject.tag == "MovablePlatform")
+			activePlatform = null;
 	}
 }
 
