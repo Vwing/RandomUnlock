@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
 	bool right = true;
 	bool jumpAllowed = false;
-	float feetPos;
 
 	Transform sprite;
 	Rigidbody2D rb;
@@ -20,8 +19,6 @@ public class Player : MonoBehaviour
 		sprite = transform.FindChild("Sprite");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
-
-		feetPos = GetComponent<BoxCollider2D>().bounds.extents.y;
 	}
 
 	void Update ()
@@ -64,18 +61,22 @@ public class Player : MonoBehaviour
 
 	void OnCollisionStay2D(Collision2D other)
 	{
-//		string otherTag = other.gameObject.tag;
-//		if(otherTag == "Ground")
-			jumpAllowed = true;
+		jumpAllowed = true;
 	}
 
 	void OnCollisionExit2D(Collision2D other)
 	{
+		jumpAllowed = false;
+	}
+}
+
+
 //		string otherTag = other.gameObject.tag;
 //		if(otherTag == "Ground")
-			jumpAllowed = false;
-	}
-	
+
+//float feetPos;
+//feetPos = GetComponent<BoxCollider2D>().bounds.extents.y;
+
 //	bool IsGrounded()
 //	{
 //		return Physics2D.Raycast (transform.position,-Vector2.up,feetPos);
@@ -89,4 +90,3 @@ public class Player : MonoBehaviour
 //		else
 //			sprite.localPosition = Vector3.zero;
 //	}
-}
