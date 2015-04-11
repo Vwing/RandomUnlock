@@ -78,7 +78,8 @@ public class Player : MonoBehaviour
 	void Jump()
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
-		rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+		float jumpVelocity = Mathf.Sqrt( 2 * -Physics.gravity.y * jumpHeight );
+		rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
 		fallEnabled = true;
 	}
 
