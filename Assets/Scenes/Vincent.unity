@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1437664182}
   - 212: {fileID: 1437664181}
+  - 61: {fileID: 1437664183}
   m_Layer: 0
   m_Name: Grassland
   m_TagString: Untagged
@@ -358,11 +359,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437664180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -12, z: 0}
+  m_LocalPosition: {x: 16, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!61 &1437664183
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437664180}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .5, y: -.5}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1001 &1709737550
 Prefab:
   m_ObjectHideFlags: 0
@@ -401,6 +415,22 @@ Prefab:
     - target: {fileID: 417674, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 163280, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
+      propertyPath: m_Name
+      value: Ground 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181334, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
+      propertyPath: m_Name
+      value: Ground 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 111692, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
+      propertyPath: m_Name
+      value: Ground 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 125592, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
+      propertyPath: m_Name
+      value: Ground 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b5ef04a43e2ce346be678aba77bd09e, type: 2}
