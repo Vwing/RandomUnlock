@@ -15727,7 +15727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolDistance: {x: 3, y: 2, z: 0}
-  patrolSpeed: 1
+  patrolSpeed: 5
 --- !u!61 &2104920928
 BoxCollider2D:
   m_ObjectHideFlags: 0

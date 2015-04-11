@@ -20,17 +20,12 @@ public class Patrol : MonoBehaviour
 	
 	void Update ()
 	{
-		if(transform.position.x >= targetPos.x){
+		if(Vector3.Dot (direction,targetPos - transform.position) <= 0){
 			goingTowardsTarget = false;
-		} else if(transform.position.x <= initPos.x){
+		} 
+		else if(Vector3.Dot (direction,initPos - transform.position) >= 0){
 			goingTowardsTarget = true;
 		}
-//		float magnitude = (transform.position - targetPos).magnitude;
-//		if(transform.position - targetPos){
-//			goingTowardsTarget = false;
-//		} else if(transform.position.x <= initPos.x){
-//			goingTowardsTarget = true;
-//		}
 
 		if(goingTowardsTarget)
 			transform.Translate(direction * patrolSpeed * Time.deltaTime);
