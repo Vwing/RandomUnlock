@@ -323,7 +323,7 @@ GameObject:
   - 50: {fileID: 1673798834}
   - 114: {fileID: 1673798836}
   m_Layer: 0
-  m_Name: Knight16x16_0
+  m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,7 +393,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: .230000004
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -423,3 +423,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a32457a43372c4eb4d5746cdae7a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
