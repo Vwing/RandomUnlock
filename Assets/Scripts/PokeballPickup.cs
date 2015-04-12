@@ -24,7 +24,7 @@ public class PokeballPickup : MonoBehaviour {
 			if(playerchar.transform.localScale.x >0)
 				this.transform.position = playerchar.transform.position + offset;
 			else
-				this.transform.position = playerchar.transform.position - offset;
+				this.transform.position = playerchar.transform.position + offset;
 			rb.isKinematic = false;
 
 		}
@@ -45,13 +45,13 @@ public class PokeballPickup : MonoBehaviour {
 				carried = false;
 				if(playerchar.transform.localScale.x >0)
 				{
-					this.transform.position = playerchar.transform.position + new Vector3(1,0,0);
+					this.transform.position = playerchar.transform.position + new Vector3(1,3/5,0);
 					rb.velocity = new Vector2(throwVelx,throwVely);
 				}
 				else
 				{
-					this.transform.position = playerchar.transform.position - new Vector3(1,0,0);
-					rb.velocity = new Vector2(-throwVelx,-throwVely);
+					this.transform.position = playerchar.transform.position + new Vector3(-1,3/5,0);
+					rb.velocity = new Vector2(-throwVelx,throwVely);
 				}
 				rb.isKinematic = false;
 				cc.isTrigger = false;

@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
-  jetForce: 40
+  jetForce: 60
   jumpSpeed: 13
   maxJumpHeight: 4
   minJumpHeight: .5

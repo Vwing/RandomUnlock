@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pickup
   - MovablePlatform
+  - Pickup
+  - New Tag
   layers:
   - Default
   - TransparentFX
@@ -40,7 +42,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: Object
     uniqueID: 2944984265
     locked: 0
   - name: Default
