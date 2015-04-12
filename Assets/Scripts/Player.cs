@@ -4,62 +4,54 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 	public float walkSpeed = 1.0f;
-	public float jumpForce = 450.0f;
+	//public float jumpForce = 450.0f;
 	public float jetForce = 1.0f;
-	public float jumpHeight = 10.0f;
+	public float jumpSpeed = 16.0f;
 
 	bool right = true;
 	bool jumpAllowed = false;
 	bool fallEnabled = false;
-	float feetPos;
+
+	float yBound;
+	float xBound;
 
 	Transform sprite;
 	Rigidbody2D rb;
 	Animator anim;
+	BoxCollider2D coll;
 
-	Transform activePlatform = null;
-	Vector3 activeLocalPlatformPoint;
-	Vector3 activeGlobalPlatformPoint;
-	Vector3 lastPlatformVelocity;
-
-	void Start () 
+	void Awake()
 	{
 		sprite = transform.FindChild("Sprite");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
-		feetPos = GetComponent<BoxCollider2D>().bounds.extents.y;
+		coll = GetComponent<BoxCollider2D>();
 	}
 
-	void Update ()
+	void Start () 
 	{
-		if(activePlatform != null){
-			var newGlobalPlatformPoint = activePlatform.TransformPoint(activeLocalPlatformPoint);
-			var moveDistance = (newGlobalPlatformPoint - activeGlobalPlatformPoint);
-			if (moveDistance != Vector3.zero)
-				transform.position += moveDistance;
-			lastPlatformVelocity = (newGlobalPlatformPoint - activeGlobalPlatformPoint) / Time.deltaTime;
-		} else
-			lastPlatformVelocity = Vector3.zero;
+		yBound = coll.bounds.extents.y;
+		xBound = coll.bounds.extents.x;
+	}
 
+	void FixedUpdate ()
+	{
 		LateralMovement();
 		if(Input.GetButton ("Fire1"))
 			Jetpack ();
 		if(Input.GetButtonDown ("Jump") && jumpAllowed)
 			Jump ();
-		if(Input.GetButtonUp ("Jump") && fallEnabled)
-			StopJump ();
-
-		// Moving platforms support
-		if (activePlatform != null) {
-			activeGlobalPlatformPoint = transform.position;
-			activeLocalPlatformPoint = activePlatform.InverseTransformPoint (transform.position);
-		}
 	}
 
 	float xAxis;
 
 	void LateralMovement()
 	{
+		if(!CanWalk ()){
+			rb.velocity = Vector2.zero;
+			return;
+		}
+
 		xAxis = Input.GetAxis ("Horizontal");
 
 		if(xAxis == 0)
@@ -75,37 +67,51 @@ public class Player : MonoBehaviour
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
 	}
 
+	bool CanWalk()
+	{
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2(xBound,yBound + 0.1f), Vector2.right, 0.5f);
+		if(hit.collider == null)
+			return true;
+		else
+			return false;
+	}
+
 	void Jump()
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
-		float jumpVelocity = Mathf.Sqrt( 2 * -Physics.gravity.y * jumpHeight );
-		rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
-		fallEnabled = true;
+		//float jumpVelocity = Mathf.Sqrt( 2 * -Physics.gravity.y * jumpHeight );
+		rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+		//fallEnabled = false;
 	}
 
 	void StopJump()
 	{
 		rb.velocity = new Vector2(rb.velocity.x, 0);
-		fallEnabled = false;
+		//fallEnabled = true;
 	}
 
 	void Jetpack()
 	{
 		rb.AddForce(Vector3.up * jetForce);
 	}
-	
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		jumpAllowed = true;
+		if(other.gameObject.tag == "MovablePlatform")
+			transform.SetParent (other.transform);
+	}
+
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
-		if(other.gameObject.tag == "MovablePlatform" && other.transform.position.y <= feetPos)
-			activePlatform = other.transform;
 	}
 
 	void OnCollisionExit2D(Collision2D other)
 	{
 		jumpAllowed = false;
 		if(other.gameObject.tag == "MovablePlatform")
-			activePlatform = null;
+			transform.SetParent (null);
 	}
 }
 
@@ -119,13 +125,4 @@ public class Player : MonoBehaviour
 //	bool IsGrounded()
 //	{
 //		return Physics2D.Raycast (transform.position,-Vector2.up,feetPos);
-//	}
-
-//	void Rotate180()
-//	{
-//		sprite.Rotate(Vector3.up * -180);
-//		if(!right)
-//			sprite.localPosition = Vector3.left * -1.0f;
-//		else
-//			sprite.localPosition = Vector3.zero;
 //	}
