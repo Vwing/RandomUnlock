@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
 	public ParticleSystem smoke;
+	public Transform spawnPoint;
 	
 	bool right = true;
 	bool jumpAllowed = false;
@@ -69,7 +70,12 @@ public class Player : MonoBehaviour
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
 	}
-	
+
+	public void Death()
+	{
+		transform.position = spawnPoint.position;
+	}
+
 	void Jump()
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
