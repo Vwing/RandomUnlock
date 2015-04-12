@@ -18,18 +18,18 @@ public class Player : MonoBehaviour
 	float startJumpY;
 	
 	Transform sprite;
-	Transform jetpack;
+//	Transform jetpack;
 	Rigidbody2D rb;
 	Animator anim;
-	BoxCollider2D coll;
+//	BoxCollider2D coll;
 	
 	void Awake()
 	{
 		sprite = transform.FindChild("Sprite");
-		jetpack = transform.FindChild("Jetpack");
+//		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
-		coll = GetComponent<BoxCollider2D>();
+//		coll = GetComponent<BoxCollider2D>();
 	}
 	
 	void Start () 
@@ -61,12 +61,9 @@ public class Player : MonoBehaviour
 		else
 			anim.enabled = true;
 		
-		if(xAxis > 0 && !right || xAxis < 0 && right){
-			//right = !right;
+		if(xAxis > 0 && !right || xAxis < 0 && right)
 			Flip ();
-//			sprite.RotateAround(transform.position + Vector3.left * -0.5f, Vector3.up, 180);
-//			sprite.RotateAround(transform.position + Vector3.left * -0.5f, Vector3.up, 180);
-		}
+
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
 	}
