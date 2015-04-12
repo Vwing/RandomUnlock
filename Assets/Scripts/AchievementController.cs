@@ -11,7 +11,7 @@ public class AchievementController : MonoBehaviour
 	[HideInInspector]
 	public List<Achievement> Objectives = new List<Achievement>();
 
-	public int numAchivementsNeeded = 5;
+	public int numAchivementsNeeded = 3;
 
 	public struct Achievement 
 	{
@@ -40,7 +40,7 @@ public class AchievementController : MonoBehaviour
 		}
 	}
 
-	void LoadObjectives(string biome)
+	public void LoadObjectives(string biome)
 	{
 		AchievementList.Clear();
 		foreach(Achievement a in FullAchievementList)
@@ -57,16 +57,6 @@ public class AchievementController : MonoBehaviour
 		Shuffle (AchievementList);
 		for(int i = 0; i < numAchivementsNeeded; ++i)
 			Objectives.Add (AchievementList[i]);
-
-//		int count = AchievementList.Count;
-//		int needed = numAchivementsNeeded - 1;
-//		for(int i = 0; i < count; ++i)
-//		{
-//			if(Random.Range (needed, count - i) <= needed){
-//				Objectives.Add (AchievementList[i]);
-//				--needed;
-//			}
-//		}
 	}
 
 	void Shuffle(List<Achievement> list) {
@@ -80,7 +70,7 @@ public class AchievementController : MonoBehaviour
 			list[n] = value;
 		}
 	}
-	
+
 	void Awake()
 	{
 		LoadAllAchievements ();
