@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 	public float jumpSpeed = 16.0f;
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
+	public ParticleSystem smoke;
 	
 	bool right = true;
 	bool jumpAllowed = false;
@@ -37,8 +38,11 @@ public class Player : MonoBehaviour
 	void FixedUpdate ()
 	{
 		LateralMovement();
-		if(Input.GetButton ("Fire1"))
+		if(Input.GetButton ("Fire1")){
 			Jetpack ();
+			smoke.enableEmission = true;
+		} else
+			smoke.enableEmission = false;
 		if(Input.GetButtonDown ("Jump") && jumpAllowed)
 			Jump ();
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
