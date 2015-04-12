@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 096fd447266e3224e8e910117f4d0a7c
-timeCreated: 1428869863
+timeCreated: 1428880064
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,8 +58,8 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Mountain Yeti_1
       rect:
@@ -68,8 +68,8 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
