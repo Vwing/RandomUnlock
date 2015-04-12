@@ -13,7 +13,8 @@ public class CameraFollow : MonoBehaviour
 	}
 	
 	void Update ()
-	{
+	{	
+		//if((xPos + 5.0 >= 150) && x
 		xPos = followObject.transform.position.x;
 		transform.position = new Vector3(xPos,yPos,-10.0f);
 	}
