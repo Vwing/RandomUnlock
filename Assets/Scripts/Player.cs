@@ -7,10 +7,13 @@ public class Player : MonoBehaviour
 	//public float jumpForce = 450.0f;
 	public float jetForce = 1.0f;
 	public float jumpSpeed = 16.0f;
+	public float maxJumpHeight = 4.0f;
+	public float minJumpHeight = 0.5f;
 
 	bool right = true;
 	bool jumpAllowed = false;
 	bool fallEnabled = false;
+	float startJumpY;
 
 	float yBound;
 	float xBound;
@@ -41,6 +44,8 @@ public class Player : MonoBehaviour
 			Jetpack ();
 		if(Input.GetButtonDown ("Jump") && jumpAllowed)
 			Jump ();
+		if(Input.GetButtonUp ("Jump") && fallEnabled)
+			StopJump();
 	}
 
 	float xAxis;
@@ -80,14 +85,28 @@ public class Player : MonoBehaviour
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
 		//float jumpVelocity = Mathf.Sqrt( 2 * -Physics.gravity.y * jumpHeight );
-		rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-		//fallEnabled = false;
+		float jumpVelocity = Mathf.Sqrt (4 * -Physics.gravity.y * maxJumpHeight);
+		rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+
+		startJumpY = transform.position.y;
+		fallEnabled = true;
 	}
 
 	void StopJump()
 	{
-		rb.velocity = new Vector2(rb.velocity.x, 0);
-		//fallEnabled = true;
+		if(rb.velocity.y > 0)
+		{
+			if(transform.position.y - startJumpY < minJumpHeight)
+			{
+				float minVel = Mathf.Sqrt(4 * -Physics.gravity.y * ( (startJumpY + minJumpHeight) - transform.position.y) );
+				rb.velocity = new Vector2(rb.velocity.x, minVel);
+			}
+			else
+			{
+				rb.velocity = new Vector2(rb.velocity.x, 0.1f);
+			}
+		}
+		fallEnabled = false;
 	}
 
 	void Jetpack()
