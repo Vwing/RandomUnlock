@@ -10,7 +10,7 @@ public class Patrol : MonoBehaviour
 	Vector3 targetPos;
 	Vector3 direction;
 	bool goingTowardsTarget = true;
-	bool right = true;
+	bool firstTime = true;
 
 	void Start ()
 	{
@@ -38,17 +38,16 @@ public class Patrol : MonoBehaviour
 
 	void Flip ()
 	{
-		// Switch the way the player is labelled as facing.
-		right = !right;
-
 		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-
-//		if(right)
-//			transform.position += new Vector3(1, 0, 0);
-//		else
-//			transform.position  -= new Vector3(-1, 0, 0);
+		if(!firstTime)
+		{
+			Vector3 theScale = transform.localScale;
+			theScale.x *= -1;
+			transform.localScale = theScale;
+		}
+		else
+		{
+			firstTime = false;
+		}
 	}
 }
