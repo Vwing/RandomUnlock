@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
 	public float walkSpeed = 1.0f;
 	//public float jumpForce = 450.0f;
-	public float jetForce = 1.0f;
+	public float jetForce = 10.0f;
 	public float jumpSpeed = 16.0f;
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
