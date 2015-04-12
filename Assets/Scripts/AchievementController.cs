@@ -4,12 +4,16 @@ using System.Collections.Generic;
 
 public class AchievementController : MonoBehaviour 
 {
-	public string AchievementFilePath = "Text/achievements";
+	string AchievementFilePath = "Text/achievements";
+	List<Achievement> FullAchievementList = new List<Achievement>();
+	List<Achievement> AchievementList = new List<Achievement>();
+
 	public struct Achievement 
 	{
 		public string biome;
 		public string trigger;
 		public string description;
+		public bool unlocked = false;
 
 		public Achievement(string loc, string trig, string text)
 		{
@@ -19,7 +23,6 @@ public class AchievementController : MonoBehaviour
 		}
 	}
 
-	public List<Achievement> AchievementList = new List<Achievement>();
 
 	void LoadAllAchievements()
 	{
@@ -27,8 +30,13 @@ public class AchievementController : MonoBehaviour
 		foreach(string line in achtxt.text.Split(new char[1]{'\n'}))
 		{
 			string[] achArr = line.Split (new char[1]{';'});
-			AchievementList.Add (new Achievement(achArr[0], achArr[1], achArr[2]));
+			FullAchievementList.Add (new Achievement(achArr[0], achArr[1], achArr[2]));
 		}
+	}
+
+	void ChooseRandomAchievements()
+	{
+
 	}
 
 	void Start () 
