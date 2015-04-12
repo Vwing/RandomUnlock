@@ -9,34 +9,31 @@ public class Player : MonoBehaviour
 	public float jumpSpeed = 16.0f;
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
-
+	
 	bool right = true;
 	bool jumpAllowed = false;
 	bool fallEnabled = false;
 	float startJumpY;
-
-	float yBound;
-	float xBound;
-
+	
 	Transform sprite;
+	Transform jetpack;
 	Rigidbody2D rb;
 	Animator anim;
 	BoxCollider2D coll;
-
+	
 	void Awake()
 	{
 		sprite = transform.FindChild("Sprite");
+		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
 		coll = GetComponent<BoxCollider2D>();
 	}
-
+	
 	void Start () 
 	{
-		yBound = coll.bounds.extents.y;
-		xBound = coll.bounds.extents.x;
 	}
-
+	
 	void FixedUpdate ()
 	{
 		LateralMovement();
@@ -47,51 +44,39 @@ public class Player : MonoBehaviour
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
 	}
-
+	
 	float xAxis;
-
+	
 	void LateralMovement()
 	{
-		if(!CanWalk ()){
-			rb.velocity = Vector2.zero;
-			return;
-		}
-
 		xAxis = Input.GetAxis ("Horizontal");
-
+		
 		if(xAxis == 0)
 			anim.enabled = false;
 		else
 			anim.enabled = true;
-
+		
 		if(xAxis > 0 && !right || xAxis < 0 && right){
-			right = !right;
-			sprite.RotateAround(transform.position + Vector3.left * -0.5f, Vector3.up, 180);
+			//right = !right;
+			Flip ();
+//			sprite.RotateAround(transform.position + Vector3.left * -0.5f, Vector3.up, 180);
+//			sprite.RotateAround(transform.position + Vector3.left * -0.5f, Vector3.up, 180);
 		}
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
 	}
-
-	bool CanWalk()
-	{
-		RaycastHit2D hit = Physics2D.Raycast(new Vector2(xBound,yBound + 0.1f), Vector2.right, 0.5f);
-		if(hit.collider == null)
-			return true;
-		else
-			return false;
-	}
-
+	
 	void Jump()
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
 		//float jumpVelocity = Mathf.Sqrt( 2 * -Physics.gravity.y * jumpHeight );
 		float jumpVelocity = Mathf.Sqrt (4 * -Physics.gravity.y * maxJumpHeight);
 		rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
-
+		
 		startJumpY = transform.position.y;
 		fallEnabled = true;
 	}
-
+	
 	void StopJump()
 	{
 		if(rb.velocity.y > 0)
@@ -109,23 +94,34 @@ public class Player : MonoBehaviour
 		fallEnabled = false;
 	}
 
+	void Flip ()
+	{
+		// Switch the way the player is labelled as facing.
+		right = !right;
+		
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+
 	void Jetpack()
 	{
 		rb.AddForce(Vector3.up * jetForce);
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		jumpAllowed = true;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (other.transform);
 	}
-
+	
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
 	}
-
+	
 	void OnCollisionExit2D(Collision2D other)
 	{
 		jumpAllowed = false;

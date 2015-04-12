@@ -12,8 +12,8 @@ public class Jetpack : MonoBehaviour
 	void Update ()
 	{
 		if(Input.GetButton ("Fire1"))
-			anim.Play("JetpackOn");
+			anim.SetBool("jetOn",true);
 		else
-			anim.Play("JetpackOff");
+			anim.SetBool ("jetOn",false);
 	}
 }
