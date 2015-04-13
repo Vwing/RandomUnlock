@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public Transform spawnPoint;
 	public AudioClip walk;
 	public AudioClip jump;
+	private float timer;
 	
 	bool right = true;
 	bool jumpAllowed = false;
@@ -52,6 +53,38 @@ public class Player : MonoBehaviour
 		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
+
+		if (jumpAllowed == false) {
+			timer = timer+= Time.deltaTime;
+			if(timer > 2)
+			{
+				AchievementController.IncrementAchievement("FS2")
+			}
+			if(timer > 3)
+			{
+				AchievementController.IncrementAchievement("FS3")
+			}
+			if(timer > 4 && this.transform.position.y<90 && this.transform.position.y>59)
+			{
+				AchievementController.IncrementAchievement("FJ")
+			}
+			if(timer > 4 && this.transform.position.y<59 && this.transform.position.y>29)
+			{
+				AchievementController.IncrementAchievement("FD")
+			}
+			if(timer > 4 && this.transform.position.y<29 && this.transform.position.y>0)
+			{
+				AchievementController.IncrementAchievement("FU")
+			}
+			if(timer > 4 && this.transform.position.y<148 && this.transform.position.y>90)
+			{
+				AchievementController.IncrementAchievement("FG")
+			}
+			if(timer > 4 && this.transform.position.y<180 && this.transform.position.y>150)
+			{
+				AchievementController.IncrementAchievement("FM")
+			}
+		}
 	}
 	
 	float xAxis;
@@ -135,6 +168,7 @@ public class Player : MonoBehaviour
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
+		timer = 0;
 	}
 	
 	void OnCollisionExit2D(Collision2D other)
