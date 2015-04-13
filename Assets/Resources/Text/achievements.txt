@@ -1,7 +1,7 @@
 A;Die5;Die 5 times;5
 A;Die10;Die 10 times;10
 A;DieS;Die by the spikes;1
-A;J10;Jump 10 times;3
+A;J10;Jump 10 times;10
 A;JS;Jump the shark;1
 A;F4;Fall for 4 tiles;4
 A;F5;Fall for 5 tiles;5

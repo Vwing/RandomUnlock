@@ -11,7 +11,7 @@ public class AchievementController : MonoBehaviour
 	[HideInInspector]
 	public static List<Achievement> Objectives = new List<Achievement>();
 
-	public static int numAchivementsNeeded = 10;
+	public static int numAchivementsNeeded = 3;
 
 	public class Achievement 
 	{
@@ -53,9 +53,19 @@ public class AchievementController : MonoBehaviour
 				if(count == needed){
 					Objectives[i].unlocked = true;
 				}
-				//Debug.Log (count + ";" + Objectives[i].countNeeded + ": " + Objectives[i].trigger + " " + Objectives[i].description + " " + Objectives[i].unlocked);
+				Debug.Log (count + ";" + Objectives[i].countNeeded + ": " + Objectives[i].trigger + " " + Objectives[i].description + " " + Objectives[i].unlocked);
 			}
 		}
+	}
+
+	public static bool ObjectivesCompleted()
+	{
+		foreach(Achievement o in Objectives)
+		{
+			if(!o.unlocked)
+				return false;
+		}
+		return true;
 	}
 
 	public static void LoadObjectives(string biome)
