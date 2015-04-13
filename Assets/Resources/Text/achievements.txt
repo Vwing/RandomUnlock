@@ -1,35 +1,35 @@
-A;Die5;Die 5 times
-A;Die10;Die 10 times
-A;DieS;Die by the spikes
-A;J10;Jump 10 times
-A;JS;Jump the shark
-A;F4;Fall for 4 tiles
-A;F5;Fall for 5 tiles
-A;F2S;Fall for 2 seconds
-A;F3S;Fall for 3 seconds
-A;JP5;Use Jetpack for 5 seconds
-J;DJ;Die on Jungle Tile
-J;WJ;Walk on Jungle Tile
-J;BJ;Press the button on Jungle Tile
-J;PJ;Pick up the Jungle Monument
-J;F4;Fall for 4 tiles in Jungle Biome
-M;DM;Die on Mountain Tile
-M;WM;Walk on Jungle Tile
-M;BM;Press the button on Mountain Tile
-M;PM;Pick up the Mountain Monument
-M;F4;Fall for 4 tiles in Mountain Biome
-D;DD;Die on Desert Tile
-D;WD;Walk on Desert Tile
-D;BD;Press the button on Desert Tile
-D;PD;Pick up the Desert Monument
-D;F4;Fall for 4 tiles in Desert Biome
-U;DU;Die on Urban Tile
-U;WU;Walk on Urban Tile
-U;BU;Press the button on Urban Tile
-U;PU;Pick up the Urban Monument
-U;F4;Fall for 4 tiles in Urban Biome
-G;DG;Die on Grassland Tile
-G;WG;Walk on Grassland Tile
-G;BG;Press the button on Grassland tile 				
-G;PG;Pick up the Grassland Monument
-G;F4;Fall for 4 tiles in Grassland Biome 
+A;Die5;Die 5 times;5
+A;Die10;Die 10 times;10
+A;DieS;Die by the spikes;1
+A;J10;Jump 10 times;10
+A;JS;Jump the shark;1
+A;F4;Fall for 4 tiles;4
+A;F5;Fall for 5 tiles;5
+A;FS2;Fall for 2 seconds;2
+A;FS3;Fall for 3 seconds;3
+A;JP5;Use Jetpack for 5 seconds;5
+J;DJ;Die on Jungle Tile;1
+J;WJ;Walk on Jungle Tile;1
+J;BJ;Press the button on Jungle Tile;1
+J;PJ;Pick up the Jungle Monument;1
+J;F4;Fall for 4 tiles in Jungle Biome;4
+M;DM;Die on Mountain Tile;1
+M;WM;Walk on Jungle Tile;1
+M;BM;Press the button on Mountain Tile;1
+M;PM;Pick up the Mountain Monument;1
+M;F4;Fall for 4 tiles in Mountain Biome;4
+D;DD;Die on Desert Tile;1
+D;WD;Walk on Desert Tile;1
+D;BD;Press the button on Desert Tile;1
+D;PD;Pick up the Desert Monument;1
+D;F4;Fall for 4 tiles in Desert Biome;4
+U;DU;Die on Urban Tile;1
+U;WU;Walk on Urban Tile;1
+U;BU;Press the button on Urban Tile;1
+U;PU;Pick up the Urban Monument;1
+U;F4;Fall for 4 tiles in Urban Biome;4
+G;DG;Die on Grassland Tile;1
+G;WG;Walk on Grassland Tile;1
+G;BG;Press the button on Grassland tile;1 				
+G;PG;Pick up the Grassland Monument;1
+G;F4;Fall for 4 tiles in Grassland Biome;1 

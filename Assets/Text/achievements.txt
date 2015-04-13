@@ -31,5 +31,6 @@ U;F4;Fall for 4 tiles in Urban Biome
 G;DG;Die on Grassland Tile
 G;WG;Walk on Grassland Tile
 G;BG;Press the button on Grassland tile 				
-G;PG;Pick up the Grassland Monument
+G;PG;Pick up the Apple
 G;F4;Fall for 4 tiles in Grassland Biome 
+G;PK;Capture a monster with a Pokeball

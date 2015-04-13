@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 	public float minJumpHeight = 0.5f;
 	public ParticleSystem smoke;
 	public Transform spawnPoint;
+	public AudioClip walk;
+	public AudioClip jump;
 	
 	bool right = true;
 	bool jumpAllowed = false;
@@ -56,9 +58,10 @@ public class Player : MonoBehaviour
 	{
 		xAxis = Input.GetAxis ("Horizontal");
 		
-		if(xAxis == 0)
+		if (xAxis == 0) {
 			anim.enabled = false;
-		else
+
+		}else
 			anim.enabled = true;
 		
 		if(xAxis > 0 && !right || xAxis < 0 && right)
@@ -66,6 +69,8 @@ public class Player : MonoBehaviour
 
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
+
+			
 	}
 
 	public void Death()
@@ -82,6 +87,7 @@ public class Player : MonoBehaviour
 		
 		startJumpY = transform.position.y;
 		fallEnabled = true;
+		AudioSource.PlayClipAtPoint (jump, this.transform.position);
 	}
 	
 	void StopJump()

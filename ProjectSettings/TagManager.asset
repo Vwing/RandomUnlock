@@ -7,7 +7,9 @@ TagManager:
   - Pickup
   - MovablePlatform
   - Pickup
-  - Water
+  - New Tag
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
