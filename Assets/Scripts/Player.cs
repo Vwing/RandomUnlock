@@ -11,22 +11,24 @@ public class Player : MonoBehaviour
 	public float minJumpHeight = 0.5f;
 	public ParticleSystem smoke;
 	public Transform spawnPoint;
+	//public AchievementController achievControl;
 	
 	bool right = true;
 	bool jumpAllowed = false;
 	bool fallEnabled = false;
 	float startJumpY;
+
+	float jumpCount = 0;
 	
 	Transform sprite;
 //	Transform jetpack;
 	Rigidbody2D rb;
 	Animator anim;
 //	BoxCollider2D coll;
-	
 	void Awake()
 	{
 		sprite = transform.FindChild("Sprite");
-//		jetpack = transform.FindChild("Jetpack");
+		//		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
 //		coll = GetComponent<BoxCollider2D>();
@@ -44,8 +46,10 @@ public class Player : MonoBehaviour
 			smoke.enableEmission = true;
 		} else
 			smoke.enableEmission = false;
-		if(Input.GetButtonDown ("Jump") && jumpAllowed)
+		if(Input.GetButtonDown ("Jump") && jumpAllowed){
 			Jump ();
+			AchievementController.IncrementAchievement("J10");
+		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
 	}
