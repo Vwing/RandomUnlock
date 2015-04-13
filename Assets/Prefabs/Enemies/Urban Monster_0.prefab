@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11407928}
   - 114: {fileID: 11450154}
   - 61: {fileID: 6185246}
+  - 50: {fileID: 5016256}
   m_Layer: 0
   m_Name: Urban Monster_0
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5016256
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126766}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6185246
 BoxCollider2D:
   m_ObjectHideFlags: 1
