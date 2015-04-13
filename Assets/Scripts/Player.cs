@@ -46,8 +46,10 @@ public class Player : MonoBehaviour
 			smoke.enableEmission = true;
 		} else
 			smoke.enableEmission = false;
-		if(Input.GetButtonDown ("Jump") && jumpAllowed)
+		if(Input.GetButtonDown ("Jump") && jumpAllowed){
 			Jump ();
+			AchievementController.IncrementAchievement("J10");
+		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
 	}
