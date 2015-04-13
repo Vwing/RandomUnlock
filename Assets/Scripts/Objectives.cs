@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 }*/
 public class Objectives : MonoBehaviour {
-	List<string> achievementsAreBullshit;
+	List<string> achieveList;
 		//Debug.Log (achievements.Count);
 	//this is the list of achivements still needed^, might have to build based on what/s complete, etc.
 	public UnityEngine.UI.Button firstObj;
@@ -21,33 +21,46 @@ public class Objectives : MonoBehaviour {
 	public UnityEngine.UI.Button thirdObj;
 	// Use this for initialization
 	void Start () {
-		achievementsAreBullshit = new List<string>(){};
+		achieveList = new List<string>(){};
+		RefreshAchievements();
+		firstObj.GetComponentInChildren<Text>().text = achieveList[0];
 	}
+
+	public void RefreshAchievements()
+	{
+		achieveList.Clear ();
+		foreach(AchievementController.Achievement o in AchievementController.Objectives)
+		{
+			if(!o.unlocked)
+				achieveList.Add (o.description);
+		}
+	}
+
 	public void ExpandObjectives(){
-		Debug.Log ("expanding objectives????????");
-		Debug.Log (achievementsAreBullshit.Count);
-		foreach(string i in achievementsAreBullshit){
-		Debug.Log(i);
+		//Debug.Log ("expanding objectives????????");
+		//Debug.Log (achieveList.Count);
+		foreach(string i in achieveList){
+		//Debug.Log(i);
 	   }
-		if (achievementsAreBullshit.Count < 1) {
+		if (achieveList.Count < 1) {
 			firstObj.GetComponent<Image>().color = Color.green;
 			firstObj.GetComponentInChildren<Text>().text = "Area objectives complete, move to next biome";
 		}
 		else{
-			firstObj.GetComponentInChildren<Text>().text = achievementsAreBullshit[0];
-			if(achievementsAreBullshit.Count > 1){
-				secondObj.GetComponentInChildren<Text>().text = achievementsAreBullshit[1];
+			firstObj.GetComponentInChildren<Text>().text = achieveList[0];
+			if(achieveList.Count > 1){
+				secondObj.GetComponentInChildren<Text>().text = achieveList[1];
 				secondObj.GetComponent<Image>().color = Color.white;
 			}
-			if(achievementsAreBullshit.Count > 2){
+			if(achieveList.Count > 2){
 				thirdObj.GetComponent<Image>().color = Color.white;
-				thirdObj.GetComponentInChildren<Text>().text = achievementsAreBullshit[2];
+				thirdObj.GetComponentInChildren<Text>().text = achieveList[2];
 			}
 		}
 		
 	}
 	public void MinimizeObjectives(){
-		Debug.Log ("minimizing objectives?");
+		//Debug.Log ("minimizing objectives?");
 		secondObj.GetComponent<Image>().color = Color.clear;
 		secondObj.GetComponentInChildren<Text>().text = "";
 		thirdObj.GetComponent<Image>().color = Color.clear;
@@ -55,7 +68,7 @@ public class Objectives : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		
+		RefreshAchievements ();
 	}
 
 }
