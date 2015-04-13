@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21210008}
   - 61: {fileID: 6124484}
   m_Layer: 0
-  m_Name: Desert
+  m_Name: Trap Door
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

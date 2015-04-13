@@ -2966,7 +2966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430310, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
       propertyPath: m_RootOrder
-      value: 72
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 111624, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
       propertyPath: m_Name
@@ -3936,7 +3936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11495710, guid: b6a4c92b3005cbf4da26b29cfaaa8af8, type: 2}
       propertyPath: patrolDistance.y
-      value: 2
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 11495710, guid: b6a4c92b3005cbf4da26b29cfaaa8af8, type: 2}
       propertyPath: patrolDistance.x
@@ -6262,7 +6262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430310, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
@@ -7256,7 +7256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430310, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 111624, guid: 34c3c9df7bddb54409bf77326b06b26c, type: 2}
       propertyPath: m_Name
