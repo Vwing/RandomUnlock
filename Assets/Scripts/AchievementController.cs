@@ -10,9 +10,9 @@ public class AchievementController : MonoBehaviour
 	public static List<Achievement> AchievementList = new List<Achievement>();
 	[HideInInspector]
 	public static List<Achievement> Objectives = new List<Achievement>();
-
+	
 	public static int numAchivementsNeeded = 3;
-
+	
 	public class Achievement 
 	{
 		public string biome;
@@ -21,8 +21,8 @@ public class AchievementController : MonoBehaviour
 		public bool unlocked;
 		public int count = 0;
 		public string countNeeded;
-
-
+		
+		
 		public Achievement(string loc, string trig, string text, string countNeed)
 		{
 			biome = loc;
@@ -32,8 +32,8 @@ public class AchievementController : MonoBehaviour
 			unlocked = false;
 		}
 	}
-
-
+	
+	
 	static void LoadAllAchievements()
 	{
 		TextAsset achtxt = Resources.Load (AchievementFilePath) as TextAsset;
@@ -43,7 +43,7 @@ public class AchievementController : MonoBehaviour
 			FullAchievementList.Add (new Achievement(achArr[0], achArr[1], achArr[2], achArr[3]));
 		}
 	}
-
+	
 	public static void IncrementAchievement(string trigger)
 	{
 		for(int i = 0; i < Objectives.Count; ++i){
@@ -57,7 +57,7 @@ public class AchievementController : MonoBehaviour
 			}
 		}
 	}
-
+	
 	public static bool ObjectivesCompleted()
 	{
 		foreach(Achievement o in Objectives)
@@ -67,7 +67,7 @@ public class AchievementController : MonoBehaviour
 		}
 		return true;
 	}
-
+	
 	public static void LoadObjectives(string biome)
 	{
 		AchievementList.Clear();
@@ -78,7 +78,7 @@ public class AchievementController : MonoBehaviour
 		}
 		GenerateRandomObjectives ();
 	}
-
+	
 	static void GenerateRandomObjectives()
 	{
 		Objectives.Clear();
@@ -86,7 +86,7 @@ public class AchievementController : MonoBehaviour
 		for(int i = 0; i < numAchivementsNeeded; ++i)
 			Objectives.Add (AchievementList[i]);
 	}
-
+	
 	static void Shuffle(List<Achievement> list) {
 		int n = list.Count;
 		//Random rnd = new Random();
@@ -98,7 +98,7 @@ public class AchievementController : MonoBehaviour
 			list[n] = value;
 		}
 	}
-
+	
 	void Awake()
 	{
 		LoadAllAchievements ();
@@ -108,10 +108,10 @@ public class AchievementController : MonoBehaviour
 	void Start () 
 	{
 	}
-
+	
 	void Update()
 	{
-
+		
 	}
-
+	
 }

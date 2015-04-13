@@ -27,7 +27,7 @@ public class PokeballPickup : MonoBehaviour {
 			else
 				this.transform.position = playerchar.transform.position + offset;
 			rb.isKinematic = false;
-
+			
 		}
 		if (entered) {
 			if (Input.GetButtonDown ("Fire2")) {
@@ -58,14 +58,14 @@ public class PokeballPickup : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("Entered");
 			entered = true;
-			}
-
+		}
+		
 		if (other.gameObject.tag == "Enemy" && (rb.velocity.x > .5 || rb.velocity.x < -0.5)) 
 		{
 			Destroy (other.gameObject);
@@ -88,17 +88,17 @@ public class PokeballPickup : MonoBehaviour {
 			}
 			AudioSource.PlayClipAtPoint (catchs, this.transform.position, 9.0f);
 		}
-
+		
 	}
-
+	
 	void OnTriggerExit2D (Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("Exit");
 			entered = false;
-			}
-
+		}
+		
 	}
-
+	
 	
 }

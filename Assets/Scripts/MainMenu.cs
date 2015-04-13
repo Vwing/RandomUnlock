@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 	public float speed;
 
 	public void Play(){
-		//Application.LoadLevel ( );
+		Application.LoadLevel ("master");
 	}
 	public void Quit(){
 		Application.Quit ();

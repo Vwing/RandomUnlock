@@ -7,14 +7,14 @@ public class Timer : MonoBehaviour {
 	public GUIText timer;
 	public static int clocks = 3;
 	public double clockValue = 10.0;
-
+	
 	// Use this for initialization
 	void Start () {
 		//StartCoroutine (countdown ());
 		timeLeft = startTime;
-
-
-	
+		
+		
+		
 	}
 	// Update is called once per frame
 	void Update () {
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour {
 		if(seconds < 10) {
 			s = "0" + s;
 		}
-
+		
 		timer.text = minutes.ToString() + ":" + s;
 		if (timeLeft <= 0) {
 			if(clocks != 0){
@@ -34,12 +34,12 @@ public class Timer : MonoBehaviour {
 				timeLeft += clockValue;
 			}
 			else{
-				Debug.Log("Game Over");
+				Application.LoadLevel ("GameOver");
 				timeLeft = 0.0;
 			}
 		}
-
-
-	
+		
+		
+		
 	}
 }

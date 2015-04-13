@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
 	public Transform spawnPoint5;
 	public AudioClip walk;
 	public AudioClip jump;
-	public AudioClip jetNoise;
 	private float timer;
 	public string biome;
 	
@@ -29,28 +28,26 @@ public class Player : MonoBehaviour
 	float startJumpY;
 	
 	Transform sprite;
-//	Transform jetpack;
+	//	Transform jetpack;
 	Rigidbody2D rb;
 	Animator anim;
-//	BoxCollider2D coll;
-	AudioSource audio;
+	//	BoxCollider2D coll;
 	
 	void Awake()
 	{
 		biome = "M";
 		oldBiome = biome;
 		sprite = transform.FindChild("Sprite");
-//		jetpack = transform.FindChild("Jetpack");
+		//		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
-//		coll = GetComponent<BoxCollider2D>();
-		audio = GetComponent<AudioSource>();
+		//		coll = GetComponent<BoxCollider2D>();
 	}
 	
 	void Start () 
 	{
 	}
-
+	
 	void FixedUpdate ()
 	{
 		SetBiome ();
@@ -70,7 +67,7 @@ public class Player : MonoBehaviour
 		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
-
+		
 		if (jumpAllowed == false) {
 			timer = timer+= Time.deltaTime;
 			if(timer > 2)
@@ -104,7 +101,7 @@ public class Player : MonoBehaviour
 		}
 		oldBiome = biome;
 	}
-
+	
 	void SetBiome()
 	{
 		if(this.transform.position.y<90 && this.transform.position.y>59)
@@ -137,25 +134,19 @@ public class Player : MonoBehaviour
 		
 		if (xAxis == 0) {
 			anim.enabled = false;
-
+			
 		}else
-		{
-			if(jumpAllowed)
-			{
-				PlayLoopSound(walk);
-			}
 			anim.enabled = true;
-		}
 		
 		if(xAxis > 0 && !right || xAxis < 0 && right)
 			Flip ();
-
+		
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
-
-			
+		
+		
 	}
-
+	
 	public void Death()
 	{
 		if(biome == "M")
@@ -178,9 +169,9 @@ public class Player : MonoBehaviour
 		{
 			transform.position = spawnPoint5.position;
 		}
-
+		
 	}
-
+	
 	void Jump()
 	{
 		//rb.AddForce (Vector3.up * jumpForce);
@@ -209,7 +200,7 @@ public class Player : MonoBehaviour
 		}
 		fallEnabled = false;
 	}
-
+	
 	void Flip ()
 	{
 		// Switch the way the player is labelled as facing.
@@ -220,11 +211,10 @@ public class Player : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-
+	
 	void Jetpack()
 	{
 		rb.AddForce(Vector3.up * jetForce);
-		PlayLoopSound(jetNoise);
 	}
 	
 	void OnCollisionEnter2D(Collision2D other)
@@ -265,20 +255,6 @@ public class Player : MonoBehaviour
 		jumpAllowed = false;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (null);
-	}
-
-	void PlayLoopSound(AudioClip clip)
-	{
-		if(audio.clip != clip)
-		{
-			audio.Stop ();
-			audio.clip = clip;
-			audio.Play ();
-		}
-		else if(!audio.isPlaying)
-		{
-			audio.Play ();
-		}
 	}
 }
 

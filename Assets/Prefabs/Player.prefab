@@ -363,7 +363,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   walk: {fileID: 8300000, guid: cec4a5d884a1ea24f87b355562e8e38a, type: 3}
   jump: {fileID: 8300000, guid: 6b731ff83ce650546b9918a121411486, type: 3}
-  jetNoise: {fileID: 0}
+  jetNoise: {fileID: 8300000, guid: e87dde64f73a07e42b60c67d63a74757, type: 3}
 --- !u!114 &11493940
 MonoBehaviour:
   m_ObjectHideFlags: 1
