@@ -11,13 +11,14 @@ public class PokeballPickup : MonoBehaviour {
 	public CircleCollider2D cc;	
 	public float throwVelx;
 	public float throwVely;
-
+	public AudioClip picksup;
+	public AudioClip throws;
+	public AudioClip catchs;
 	// Use this for initialization
 	void Start () {
 		carried = false;
 		entered = false;
 	}
-	
 	// Update is called once per frame
 	void Update () {
 		if (carried) {
@@ -29,14 +30,12 @@ public class PokeballPickup : MonoBehaviour {
 
 		}
 		if (entered) {
-			Debug.Log("HI");
 			if (Input.GetButtonDown ("Fire2")) {
-				Debug.Log("HI2");
 				carried = true;
 				rb.velocity =  Vector2.zero;
 				rb.isKinematic=true;
 				cc.isTrigger = true;
-
+				AudioSource.PlayClipAtPoint (picksup, this.transform.position, 0.4f);
 			}
 		}
 		if (carried) {
@@ -55,6 +54,7 @@ public class PokeballPickup : MonoBehaviour {
 				}
 				rb.isKinematic = false;
 				cc.isTrigger = false;
+				AudioSource.PlayClipAtPoint (throws, this.transform.position, 0.7f);
 			}
 		}
 	}
@@ -65,6 +65,14 @@ public class PokeballPickup : MonoBehaviour {
 			Debug.Log ("Entered");
 			entered = true;
 			}
+
+		if (other.gameObject.tag == "Enemy" && (rb.velocity.x > .5 || rb.velocity.x < -0.5)) 
+		{
+			Destroy (other.gameObject);
+			// Gotcha!
+			rb.velocity = new Vector2(0,5);
+			AudioSource.PlayClipAtPoint (catchs, this.transform.position, 9.0f);
+		}
 
 	}
 
