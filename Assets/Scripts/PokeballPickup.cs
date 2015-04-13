@@ -71,6 +71,21 @@ public class PokeballPickup : MonoBehaviour {
 			Destroy (other.gameObject);
 			// Gotcha!
 			rb.velocity = new Vector2(0,5);
+			if (other.transform.position.y < 90 && other.transform.position.y > 59) {
+				AchievementController.IncrementAchievement("PJ");
+			}
+			if (other.transform.position.y < 59 && other.transform.position.y > 29) {
+				AchievementController.IncrementAchievement("PD");
+			}
+			if (other.transform.position.y < 29 && other.transform.position.y > 0) {
+				AchievementController.IncrementAchievement("PU");
+			}
+			if (other.transform.position.y < 148 && other.transform.position.y > 90) {
+				AchievementController.IncrementAchievement("PG");
+			}
+			if (other.transform.position.y < 180 && other.transform.position.y > 150) {
+				AchievementController.IncrementAchievement("PM");
+			}
 			AudioSource.PlayClipAtPoint (catchs, this.transform.position, 9.0f);
 		}
 
