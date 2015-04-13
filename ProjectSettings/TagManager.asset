@@ -7,7 +7,7 @@ TagManager:
   - Pickup
   - MovablePlatform
   - Pickup
-  - New Tag
+  - Water
   layers:
   - Default
   - TransparentFX
