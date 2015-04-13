@@ -92,6 +92,9 @@ public class Objectives : MonoBehaviour {
 
 	public void RefreshAchievements()
 	{
+		txt1.text = AchievementController.Objectives[0].description;
+		txt2.text = AchievementController.Objectives[1].description;
+		txt3.text = AchievementController.Objectives[2].description;
 		for(int i = 0; i < 3; ++i)
 		{
 			if(AchievementController.Objectives[i].unlocked)
