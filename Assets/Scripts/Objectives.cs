@@ -13,26 +13,92 @@ using System.Collections.Generic;
 
 }*/
 public class Objectives : MonoBehaviour {
-	List<string> achieveList;
+	List<string> achieveList = new List<string>(){};
 		//Debug.Log (achievements.Count);
 	//this is the list of achivements still needed^, might have to build based on what/s complete, etc.
 	public UnityEngine.UI.Button firstObj;
 	public UnityEngine.UI.Button secondObj;
 	public UnityEngine.UI.Button thirdObj;
-	// Use this for initialization
+	Image firstImg;
+	Image secondImg;
+	Image thirdImg;
+	Text txt1;
+	Text txt2;
+	Text txt3;
+
+	bool firstComplete = false;
+	bool secondComplete = false;
+	bool thirdComplete = false;
+
+	void Awake(){
+		firstImg = firstObj.GetComponent<Image>();
+		secondImg = secondObj.GetComponent<Image>();
+		thirdImg = thirdObj.GetComponent<Image>();
+		txt1 = firstObj.GetComponentInChildren<Text>();
+		txt2 = secondObj.GetComponentInChildren<Text>();
+		txt3 = thirdObj.GetComponentInChildren<Text>();
+	}
+
 	void Start () {
-		achieveList = new List<string>(){};
-		RefreshAchievements();
-		firstObj.GetComponentInChildren<Text>().text = achieveList[0];
+		//achieveList = new List<string>(){};
+//		txt1.text = "";
+//		txt2.text = "";
+//		txt3.text = "";
+		NewAchievements ();
+		//txt1.text = achieveList[0];
+	}
+
+	public void SetComplete(int position)
+	{
+		if(position == 0)
+		{
+			firstImg.color = Color.green;
+		}
+		else if(position == 1)
+		{
+			secondImg.color = Color.green;
+		}
+		else if(position == 2)
+		{
+			thirdImg.color = Color.green;
+		}
+		if(firstImg.color == Color.green && secondImg.color == Color.green && thirdImg.color == Color.green){
+			txt1.text = "Area objectives complete, move to next biome";
+			txt2.text = "";
+			txt3.text = "";
+		}
+	}
+
+	void NewAchievements()
+	{
+		achieveList.Clear ();
+		firstImg.color = Color.white;
+		secondImg.color = Color.white;
+		thirdImg.color = Color.white;
+		
+		txt1.text = AchievementController.Objectives[0].description;
+		txt2.text = AchievementController.Objectives[1].description;
+		txt3.text = AchievementController.Objectives[2].description;
+//
+//		foreach(AchievementController.Achievement o in AchievementController.Objectives)
+//		{
+//			achieveList.Add (o.description);
+//		}
+//		for(int i = 0; i < 3; ++i)
+//		{
+//			achieveList.Add (AchievementController.Objectives[i]);
+//		}
 	}
 
 	public void RefreshAchievements()
 	{
-		achieveList.Clear ();
-		foreach(AchievementController.Achievement o in AchievementController.Objectives)
+		txt1.text = AchievementController.Objectives[0].description;
+		txt2.text = AchievementController.Objectives[1].description;
+		txt3.text = AchievementController.Objectives[2].description;
+		for(int i = 0; i < 3; ++i)
 		{
-			if(!o.unlocked)
-				achieveList.Add (o.description);
+			if(AchievementController.Objectives[i].unlocked)
+				SetComplete(i);
 		}
 	}
 
@@ -57,8 +123,8 @@ public class Objectives : MonoBehaviour {
 				thirdObj.GetComponentInChildren<Text>().text = achieveList[2];
 			}
 		}
-		
 	}
+
 	public void MinimizeObjectives(){
 		//Debug.Log ("minimizing objectives?");
 		secondObj.GetComponent<Image>().color = Color.clear;

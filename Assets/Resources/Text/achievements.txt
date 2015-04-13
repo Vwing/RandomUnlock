@@ -11,25 +11,25 @@ A;JP5;Use Jetpack for 5 seconds;5
 J;DJ;Die on Jungle Tile;1
 J;WJ;Walk on Jungle Tile;1
 J;BJ;Press the button on Jungle Tile;1
-J;PJ;Pick up the Jungle Monument;1
-J;F4;Fall for 4 tiles in Jungle Biome;4
+J;PJ;Catch a Jungle Monster;1
+J;FJ;Fall for 4 tiles in Jungle Biome;4
 M;DM;Die on Mountain Tile;1
 M;WM;Walk on Jungle Tile;1
 M;BM;Press the button on Mountain Tile;1
-M;PM;Pick up the Mountain Monument;1
-M;F4;Fall for 4 tiles in Mountain Biome;4
+M;PM;Catch a Mountain Monster;1
+M;FJ;Fall for 4 tiles in Mountain Biome;4
 D;DD;Die on Desert Tile;1
 D;WD;Walk on Desert Tile;1
 D;BD;Press the button on Desert Tile;1
-D;PD;Pick up the Desert Monument;1
-D;F4;Fall for 4 tiles in Desert Biome;4
+D;PD;Catch a Desert Monster;1
+D;FJ;Fall for 4 tiles in Desert Biome;4
 U;DU;Die on Urban Tile;1
 U;WU;Walk on Urban Tile;1
 U;BU;Press the button on Urban Tile;1
-U;PU;Pick up the Urban Monument;1
-U;F4;Fall for 4 tiles in Urban Biome;4
+U;PU;Catch an Urban Monster;1
+U;FJ;Fall for 4 tiles in Urban Biome;4
 G;DG;Die on Grassland Tile;1
 G;WG;Walk on Grassland Tile;1
 G;BG;Press the button on Grassland tile;1 				
-G;PG;Pick up the Grassland Monument;1
-G;F4;Fall for 4 tiles in Grassland Biome;1 
+G;PG;Catch a Grassland Monster;1
+G;FJ;Fall for 4 tiles in Grassland Biome;1 

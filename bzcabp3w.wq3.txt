@@ -1,0 +1,44 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	Assets/Prefabs/Desert.prefab.meta
+	Assets/Prefabs/Enemies/Grassland Minion_0 1.prefab.meta
+	Assets/Prefabs/UISystem.prefab.meta
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 5 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	new file:   Assets/Prefabs/Enemies/Grassland Minion_0 1.prefab
+#	modified:   Assets/Prefabs/Enemies/Jungle Monster_0 1.prefab
+#	new file:   Assets/Prefabs/Pickups/Pokeball.prefab
+#	new file:   Assets/Prefabs/Pickups/Pokeball.prefab.meta
+#	new file:   Assets/Prefabs/Scenes/Jungle.prefab
+#	new file:   Assets/Prefabs/Scenes/Jungle.prefab.meta
+#	new file:   Assets/Prefabs/Scenes/Mountain.prefab
+#	new file:   Assets/Prefabs/Scenes/Mountain.prefab.meta
+#	modified:   Assets/Prefabs/Trap Door.prefab.meta
+#	modified:   Assets/Prefabs/UISystem.prefab
+#	modified:   Assets/Scenes/Levels.unity
+#	modified:   Assets/Scenes/master.unity
+#	modified:   Assets/Scripts/KillPlayer.cs
+#	modified:   Assets/Scripts/Player.cs
+#	new file:   Assets/Sprites/Characters/Grassland Minion_0.controller.meta~HEAD.meta~HEAD.meta
+#	new file:   Assets/Sprites/Characters/Grassland Minion_1.controller
+#	new file:   Assets/Sprites/Characters/Grassland Minion_1.controller.meta
+#	modified:   Assets/Sprites/Characters/minion.anim.meta
+#
+

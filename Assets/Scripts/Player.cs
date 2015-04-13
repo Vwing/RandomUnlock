@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 	public Transform spawnPoint;
 	public AudioClip walk;
 	public AudioClip jump;
+	public AudioClip jetNoise;
+	private float timer;
 	
 	bool right = true;
 	bool jumpAllowed = false;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
 	Rigidbody2D rb;
 	Animator anim;
 //	BoxCollider2D coll;
+	AudioSource audio;
 	
 	void Awake()
 	{
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
 //		coll = GetComponent<BoxCollider2D>();
+		audio = GetComponent<AudioSource>();
 	}
 	
 	void Start () 
@@ -52,6 +56,38 @@ public class Player : MonoBehaviour
 		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
+
+		if (jumpAllowed == false) {
+			timer = timer+= Time.deltaTime;
+			if(timer > 2)
+			{
+				AchievementController.IncrementAchievement("FS2");
+			}
+			if(timer > 3)
+			{
+				AchievementController.IncrementAchievement("FS3");
+			}
+			if(timer > 4 && this.transform.position.y<90 && this.transform.position.y>59)
+			{
+				AchievementController.IncrementAchievement("FJ");
+			}
+			if(timer > 4 && this.transform.position.y<59 && this.transform.position.y>29)
+			{
+				AchievementController.IncrementAchievement("FD");
+			}
+			if(timer > 4 && this.transform.position.y<29 && this.transform.position.y>0)
+			{
+				AchievementController.IncrementAchievement("FU");
+			}
+			if(timer > 4 && this.transform.position.y<148 && this.transform.position.y>90)
+			{
+				AchievementController.IncrementAchievement("FG");
+			}
+			if(timer > 4 && this.transform.position.y<180 && this.transform.position.y>150)
+			{
+				AchievementController.IncrementAchievement("FM");
+			}
+		}
 	}
 	
 	float xAxis;
@@ -64,7 +100,13 @@ public class Player : MonoBehaviour
 			anim.enabled = false;
 
 		}else
+		{
+			if(jumpAllowed)
+			{
+				PlayLoopSound(walk);
+			}
 			anim.enabled = true;
+		}
 		
 		if(xAxis > 0 && !right || xAxis < 0 && right)
 			Flip ();
@@ -123,6 +165,7 @@ public class Player : MonoBehaviour
 	void Jetpack()
 	{
 		rb.AddForce(Vector3.up * jetForce);
+		PlayLoopSound(jetNoise);
 	}
 	
 	void OnCollisionEnter2D(Collision2D other)
@@ -135,6 +178,27 @@ public class Player : MonoBehaviour
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
+		timer = 0;
+		if(this.transform.position.y<90 && this.transform.position.y>59)
+		{
+			AchievementController.IncrementAchievement("WJ");
+		}
+		if(this.transform.position.y<59 && this.transform.position.y>29)
+		{
+			AchievementController.IncrementAchievement("WD");
+		}
+		if(this.transform.position.y<29 && this.transform.position.y>0)
+		{
+			AchievementController.IncrementAchievement("WU");
+		}
+		if(this.transform.position.y<148 && this.transform.position.y>90)
+		{
+			AchievementController.IncrementAchievement("WG");
+		}
+		if(this.transform.position.y<180 && this.transform.position.y>150)
+		{
+			AchievementController.IncrementAchievement("WM");
+		}
 	}
 	
 	void OnCollisionExit2D(Collision2D other)
@@ -142,6 +206,20 @@ public class Player : MonoBehaviour
 		jumpAllowed = false;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (null);
+	}
+
+	void PlayLoopSound(AudioClip clip)
+	{
+		if(audio.clip != clip)
+		{
+			audio.Stop ();
+			audio.clip = clip;
+			audio.Play ();
+		}
+		else if(!audio.isPlaying)
+		{
+			audio.Play ();
+		}
 	}
 }
 
