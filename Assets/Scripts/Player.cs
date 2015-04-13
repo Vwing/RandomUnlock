@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 	public Transform spawnPoint5;
 	public AudioClip walk;
 	public AudioClip jump;
+	public AudioClip jetNoise;
 	private float timer;
 	public string biome;
 	
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
 	Rigidbody2D rb;
 	Animator anim;
 //	BoxCollider2D coll;
+	AudioSource audio;
 	
 	void Awake()
 	{
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
 //		coll = GetComponent<BoxCollider2D>();
+		audio = GetComponent<AudioSource>();
 	}
 	
 	void Start () 
@@ -136,7 +139,13 @@ public class Player : MonoBehaviour
 			anim.enabled = false;
 
 		}else
+		{
+			if(jumpAllowed)
+			{
+				PlayLoopSound(walk);
+			}
 			anim.enabled = true;
+		}
 		
 		if(xAxis > 0 && !right || xAxis < 0 && right)
 			Flip ();
@@ -215,6 +224,7 @@ public class Player : MonoBehaviour
 	void Jetpack()
 	{
 		rb.AddForce(Vector3.up * jetForce);
+		PlayLoopSound(jetNoise);
 	}
 	
 	void OnCollisionEnter2D(Collision2D other)
@@ -255,6 +265,20 @@ public class Player : MonoBehaviour
 		jumpAllowed = false;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (null);
+	}
+
+	void PlayLoopSound(AudioClip clip)
+	{
+		if(audio.clip != clip)
+		{
+			audio.Stop ();
+			audio.clip = clip;
+			audio.Play ();
+		}
+		else if(!audio.isPlaying)
+		{
+			audio.Play ();
+		}
 	}
 }
 

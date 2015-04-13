@@ -104,7 +104,46 @@ public class Objectives : MonoBehaviour {
 //		{
 //			achieveList.Add (AchievementController.Objectives[i]);
 //		}
+<<<<<<< HEAD
 	
+=======
+	}
+
+	public void RefreshAchievements()
+	{
+		txt1.text = AchievementController.Objectives[0].description;
+		txt2.text = AchievementController.Objectives[1].description;
+		txt3.text = AchievementController.Objectives[2].description;
+		for(int i = 0; i < 3; ++i)
+		{
+			if(AchievementController.Objectives[i].unlocked)
+				SetComplete(i);
+		}
+	}
+
+	public void ExpandObjectives(){
+		//Debug.Log ("expanding objectives????????");
+		//Debug.Log (achieveList.Count);
+		foreach(string i in achieveList){
+		//Debug.Log(i);
+	   }
+		if (achieveList.Count < 1) {
+			firstObj.GetComponent<Image>().color = Color.green;
+			firstObj.GetComponentInChildren<Text>().text = "Area objectives complete, move to next biome";
+		}
+		else{
+			firstObj.GetComponentInChildren<Text>().text = achieveList[0];
+			if(achieveList.Count > 1){
+				secondObj.GetComponentInChildren<Text>().text = achieveList[1];
+				secondObj.GetComponent<Image>().color = Color.white;
+			}
+			if(achieveList.Count > 2){
+				thirdObj.GetComponent<Image>().color = Color.white;
+				thirdObj.GetComponentInChildren<Text>().text = achieveList[2];
+			}
+		}
+	}
+>>>>>>> 031526202495a771c6bb53d541303b95bcd2ae39
 
 //	public void ExpandObjectives(){
 //		//Debug.Log ("expanding objectives????????");

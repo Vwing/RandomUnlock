@@ -717,7 +717,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 465140, guid: 6d2b5d722d07c574ba40d2cba334064e, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6100034, guid: 6d2b5d722d07c574ba40d2cba334064e, type: 2}
       propertyPath: m_Offset.y
@@ -1126,7 +1126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428880, guid: 1aa348ffee5d9014a8375e5d236ce7d1, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa348ffee5d9014a8375e5d236ce7d1, type: 2}
@@ -1850,6 +1850,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8259024, guid: fa0b0c7aeaade774d95eb86f00f8b42e, type: 2}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11453062, guid: fa0b0c7aeaade774d95eb86f00f8b42e, type: 2}
+      propertyPath: jetNoise
+      value: 
+      objectReference: {fileID: 8300000, guid: eb35c364f8eea0d488544722e9995be2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0b0c7aeaade774d95eb86f00f8b42e, type: 2}
   m_IsPrefabParent: 0

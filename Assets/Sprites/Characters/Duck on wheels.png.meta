@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 5ace8ac7ac88fad4cb186341bf6a3704
-timeCreated: 1428879227
+guid: 734c0c85575091c43b904ee3a56d7411
+timeCreated: 1428898175
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Grassland Minion_0
-    21300002: Grassland Minion_1
+    21300000: Duck on wheels_0
+    21300002: Duck on wheels_1
+    21300004: Duck on wheels_2
+    21300006: Duck on wheels_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -28,7 +30,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -42,7 +44,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 1
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
@@ -51,23 +53,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Grassland Minion_0
+    - name: Duck on wheels_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 10
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grassland Minion_1
+    - name: Duck on wheels_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 16
         y: 0
-        width: 10
-        height: 15
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Duck on wheels_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Duck on wheels_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
