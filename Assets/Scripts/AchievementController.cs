@@ -102,11 +102,11 @@ public class AchievementController : MonoBehaviour
 	void Awake()
 	{
 		LoadAllAchievements ();
+		LoadObjectives("M");
 	}
 	
 	void Start () 
 	{
-		LoadObjectives("M");
 	}
 
 	void Update()

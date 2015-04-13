@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+	public GameObject timerControl;
 	public float walkSpeed = 1.0f;
 	//public float jumpForce = 450.0f;
 	public float jetForce = 10.0f;
@@ -10,15 +11,21 @@ public class Player : MonoBehaviour
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
 	public ParticleSystem smoke;
-	public Transform spawnPoint;
+	public Transform spawnPoint1;
+	public Transform spawnPoint2;
+	public Transform spawnPoint3;
+	public Transform spawnPoint4;
+	public Transform spawnPoint5;
 	public AudioClip walk;
 	public AudioClip jump;
 	public AudioClip jetNoise;
 	private float timer;
+	public string biome;
 	
 	bool right = true;
 	bool jumpAllowed = false;
 	bool fallEnabled = false;
+	string oldBiome;
 	float startJumpY;
 	
 	Transform sprite;
@@ -30,6 +37,8 @@ public class Player : MonoBehaviour
 	
 	void Awake()
 	{
+		biome = "M";
+		oldBiome = biome;
 		sprite = transform.FindChild("Sprite");
 //		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
@@ -41,9 +50,14 @@ public class Player : MonoBehaviour
 	void Start () 
 	{
 	}
-	
+
 	void FixedUpdate ()
 	{
+		SetBiome ();
+		if (biome != oldBiome) {
+			timerControl.GetComponent<Timer>().timeLeft = timerControl.GetComponent<Timer>().startTime;
+			AchievementController.LoadObjectives(biome);	
+		}
 		LateralMovement();
 		if(Input.GetButton ("Fire1")){
 			Jetpack ();
@@ -67,26 +81,51 @@ public class Player : MonoBehaviour
 			{
 				AchievementController.IncrementAchievement("FS3");
 			}
-			if(timer > 4 && this.transform.position.y<90 && this.transform.position.y>59)
+			if(timer > 4 && biome == "J")
 			{
 				AchievementController.IncrementAchievement("FJ");
 			}
-			if(timer > 4 && this.transform.position.y<59 && this.transform.position.y>29)
+			if(timer > 4 && biome == "D")
 			{
 				AchievementController.IncrementAchievement("FD");
 			}
-			if(timer > 4 && this.transform.position.y<29 && this.transform.position.y>0)
+			if(timer > 4 && biome == "U")
 			{
 				AchievementController.IncrementAchievement("FU");
 			}
-			if(timer > 4 && this.transform.position.y<148 && this.transform.position.y>90)
+			if(timer > 4 && biome == "G")
 			{
 				AchievementController.IncrementAchievement("FG");
 			}
-			if(timer > 4 && this.transform.position.y<180 && this.transform.position.y>150)
+			if(timer > 4 && biome == "M")
 			{
 				AchievementController.IncrementAchievement("FM");
 			}
+		}
+		oldBiome = biome;
+	}
+
+	void SetBiome()
+	{
+		if(this.transform.position.y<90 && this.transform.position.y>59)
+		{
+			biome = "J";
+		}
+		if(this.transform.position.y<59 && this.transform.position.y>29)
+		{
+			biome = "D";
+		}
+		if(this.transform.position.y<29 && this.transform.position.y>0)
+		{
+			biome = "U";
+		}
+		if(this.transform.position.y<150 && this.transform.position.y>90)
+		{
+			biome = "G";
+		}
+		if(this.transform.position.y<180 && this.transform.position.y>150)
+		{
+			biome = "M";
 		}
 	}
 	
@@ -119,7 +158,27 @@ public class Player : MonoBehaviour
 
 	public void Death()
 	{
-		transform.position = spawnPoint.position;
+		if(biome == "M")
+		{
+			transform.position = spawnPoint1.position;
+		}
+		if(biome == "G")
+		{
+			transform.position = spawnPoint2.position;
+		}
+		if(biome == "J")
+		{
+			transform.position = spawnPoint3.position;
+		}
+		if(biome == "D")
+		{
+			transform.position = spawnPoint4.position;
+		}
+		if(biome == "U")
+		{
+			transform.position = spawnPoint5.position;
+		}
+
 	}
 
 	void Jump()
@@ -173,32 +232,32 @@ public class Player : MonoBehaviour
 		jumpAllowed = true;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (other.transform);
+		if(biome == "J")
+		{
+			AchievementController.IncrementAchievement("WJ");
+		}
+		if(biome == "D")
+		{
+			AchievementController.IncrementAchievement("WD");
+		}
+		if(biome == "U")
+		{
+			AchievementController.IncrementAchievement("WU");
+		}
+		if(biome == "G")
+		{
+			AchievementController.IncrementAchievement("WG");
+		}
+		if(biome == "M")
+		{
+			AchievementController.IncrementAchievement("WM");
+		}
 	}
 	
 	void OnCollisionStay2D(Collision2D other)
 	{
 		jumpAllowed = true;
 		timer = 0;
-		if(this.transform.position.y<90 && this.transform.position.y>59)
-		{
-			AchievementController.IncrementAchievement("WJ");
-		}
-		if(this.transform.position.y<59 && this.transform.position.y>29)
-		{
-			AchievementController.IncrementAchievement("WD");
-		}
-		if(this.transform.position.y<29 && this.transform.position.y>0)
-		{
-			AchievementController.IncrementAchievement("WU");
-		}
-		if(this.transform.position.y<148 && this.transform.position.y>90)
-		{
-			AchievementController.IncrementAchievement("WG");
-		}
-		if(this.transform.position.y<180 && this.transform.position.y>150)
-		{
-			AchievementController.IncrementAchievement("WM");
-		}
 	}
 	
 	void OnCollisionExit2D(Collision2D other)
