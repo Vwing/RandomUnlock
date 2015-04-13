@@ -58,31 +58,31 @@ public class Player : MonoBehaviour
 			timer = timer+= Time.deltaTime;
 			if(timer > 2)
 			{
-				AchievementController.IncrementAchievement("FS2")
+				AchievementController.IncrementAchievement("FS2");
 			}
 			if(timer > 3)
 			{
-				AchievementController.IncrementAchievement("FS3")
+				AchievementController.IncrementAchievement("FS3");
 			}
 			if(timer > 4 && this.transform.position.y<90 && this.transform.position.y>59)
 			{
-				AchievementController.IncrementAchievement("FJ")
+				AchievementController.IncrementAchievement("FJ");
 			}
 			if(timer > 4 && this.transform.position.y<59 && this.transform.position.y>29)
 			{
-				AchievementController.IncrementAchievement("FD")
+				AchievementController.IncrementAchievement("FD");
 			}
 			if(timer > 4 && this.transform.position.y<29 && this.transform.position.y>0)
 			{
-				AchievementController.IncrementAchievement("FU")
+				AchievementController.IncrementAchievement("FU");
 			}
 			if(timer > 4 && this.transform.position.y<148 && this.transform.position.y>90)
 			{
-				AchievementController.IncrementAchievement("FG")
+				AchievementController.IncrementAchievement("FG");
 			}
 			if(timer > 4 && this.transform.position.y<180 && this.transform.position.y>150)
 			{
-				AchievementController.IncrementAchievement("FM")
+				AchievementController.IncrementAchievement("FM");
 			}
 		}
 	}
@@ -169,6 +169,26 @@ public class Player : MonoBehaviour
 	{
 		jumpAllowed = true;
 		timer = 0;
+		if(this.transform.position.y<90 && this.transform.position.y>59)
+		{
+			AchievementController.IncrementAchievement("WJ");
+		}
+		if(this.transform.position.y<59 && this.transform.position.y>29)
+		{
+			AchievementController.IncrementAchievement("WD");
+		}
+		if(this.transform.position.y<29 && this.transform.position.y>0)
+		{
+			AchievementController.IncrementAchievement("WU");
+		}
+		if(this.transform.position.y<148 && this.transform.position.y>90)
+		{
+			AchievementController.IncrementAchievement("WG");
+		}
+		if(this.transform.position.y<180 && this.transform.position.y>150)
+		{
+			AchievementController.IncrementAchievement("WM");
+		}
 	}
 	
 	void OnCollisionExit2D(Collision2D other)
