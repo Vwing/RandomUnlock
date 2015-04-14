@@ -53,7 +53,7 @@ public class AchievementController : MonoBehaviour
 				if(count == needed){
 					Objectives[i].unlocked = true;
 				}
-				Debug.Log (count + ";" + Objectives[i].countNeeded + ": " + Objectives[i].trigger + " " + Objectives[i].description + " " + Objectives[i].unlocked);
+				//Debug.Log (count + ";" + Objectives[i].countNeeded + ": " + Objectives[i].trigger + " " + Objectives[i].description + " " + Objectives[i].unlocked);
 			}
 		}
 	}
@@ -73,8 +73,11 @@ public class AchievementController : MonoBehaviour
 		AchievementList.Clear();
 		foreach(Achievement a in FullAchievementList)
 		{
-			if(a.biome == biome || a.biome == "A")
+			if(a.biome == biome || a.biome == "A"){
 				AchievementList.Add (a);
+				a.unlocked = false;
+				a.count = 0;
+			}
 		}
 		GenerateRandomObjectives ();
 	}

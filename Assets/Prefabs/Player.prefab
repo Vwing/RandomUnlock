@@ -30,6 +30,7 @@ GameObject:
   - 124: {fileID: 12498156}
   - 81: {fileID: 8101456}
   - 114: {fileID: 11493940}
+  - 82: {fileID: 8269710}
   m_Layer: 0
   m_Name: Follow Camera
   m_TagString: MainCamera
@@ -135,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 2.4000001, z: 0}
+  m_LocalPosition: {x: 19.4400005, y: 59.5019989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459902}
@@ -291,6 +292,75 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &8269710
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114174}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ab642f13d7f24df4b9b968b37f75c7f8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .349999994
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!92 &9200976
 Behaviour:
   m_ObjectHideFlags: 1
@@ -354,16 +424,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a32457a43372c4eb4d5746cdae7a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerControl: {fileID: 0}
   walkSpeed: 5
   jetForce: 60
   jumpSpeed: 13
   maxJumpHeight: 4
   minJumpHeight: .5
   smoke: {fileID: 19889776}
-  spawnPoint: {fileID: 0}
-  walk: {fileID: 8300000, guid: cec4a5d884a1ea24f87b355562e8e38a, type: 3}
+  spawnPoint1: {fileID: 0}
+  spawnPoint2: {fileID: 0}
+  spawnPoint3: {fileID: 0}
+  spawnPoint4: {fileID: 0}
+  spawnPoint5: {fileID: 0}
+  walk: {fileID: 8300000, guid: 63d24b616a955124fb34828e8d81b126, type: 3}
   jump: {fileID: 8300000, guid: 6b731ff83ce650546b9918a121411486, type: 3}
-  jetNoise: {fileID: 8300000, guid: e87dde64f73a07e42b60c67d63a74757, type: 3}
+  biome: 
 --- !u!114 &11493940
 MonoBehaviour:
   m_ObjectHideFlags: 1

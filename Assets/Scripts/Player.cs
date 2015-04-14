@@ -104,11 +104,11 @@ public class Player : MonoBehaviour
 	
 	void SetBiome()
 	{
-		if(this.transform.position.y<90 && this.transform.position.y>59)
+		if(this.transform.position.y<90 && this.transform.position.y>60)
 		{
 			biome = "J";
 		}
-		if(this.transform.position.y<59 && this.transform.position.y>29)
+		if(this.transform.position.y<60 && this.transform.position.y>29)
 		{
 			biome = "D";
 		}

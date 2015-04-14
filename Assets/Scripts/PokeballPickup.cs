@@ -62,7 +62,7 @@ public class PokeballPickup : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("Entered");
+			//Debug.Log ("Entered");
 			entered = true;
 		}
 		
@@ -94,7 +94,7 @@ public class PokeballPickup : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("Exit");
+			//Debug.Log ("Exit");
 			entered = false;
 		}
 		

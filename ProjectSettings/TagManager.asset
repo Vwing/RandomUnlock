@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Pickup
   - MovablePlatform
-  - Pickup
-  - New Tag
   - Ground
   - Enemy
   layers:

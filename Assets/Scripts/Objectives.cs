@@ -28,10 +28,6 @@ public class Objectives : MonoBehaviour {
 	Text txt2;
 	Text txt3;
 	
-	bool firstComplete = false;
-	bool secondComplete = false;
-	bool thirdComplete = false;
-	
 	void Awake(){
 		firstImg = firstObj.GetComponent<Image>();
 		secondImg = secondObj.GetComponent<Image>();
