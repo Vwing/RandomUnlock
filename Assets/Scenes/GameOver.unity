@@ -235,7 +235,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f08767807414df64b89da3eb55d84be1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -295,6 +295,56 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1001 &469504918
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 576518644}
+    m_Modifications:
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.88000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.0399999991
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498676, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11495906, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+      propertyPath: patrolDistance.x
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c3fb9274a614ab84bb4cfad9ee351eb2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &559718466
 Prefab:
   m_ObjectHideFlags: 0
@@ -340,6 +390,10 @@ Prefab:
 --- !u!1 &576518643 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 177930, guid: b169b3485ea350d4fa53dd8d01d417a9, type: 2}
+  m_PrefabInternal: {fileID: 559718466}
+--- !u!4 &576518644 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 454088, guid: b169b3485ea350d4fa53dd8d01d417a9, type: 2}
   m_PrefabInternal: {fileID: 559718466}
 --- !u!212 &576518646
 SpriteRenderer:

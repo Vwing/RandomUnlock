@@ -17,6 +17,14 @@ public class MainMenu : MonoBehaviour {
 	{
 		initY = transform.position.y;
 	}
+
+	public void Update()
+	{
+		if(Input.GetButtonDown("Submit"))
+			Play ();
+		if(Input.GetButtonDown("Cancel"))
+			Quit ();
+	}
 	public void FixedUpdate()
 	{
 		transform.position =  new Vector3(transform.position.x, initY + hoverValue * Mathf.Sin (speed * Time.timeSinceLevelLoad), transform.position.z); 

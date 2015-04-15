@@ -29,6 +29,11 @@ public class Player : MonoBehaviour
 	bool fallEnabled = false;
 	string oldBiome;
 	float startJumpY;
+
+	public GameObject GrassLand;
+	public GameObject Jungle;
+	public GameObject Desert;
+	public GameObject Urban;
 	
 	Transform sprite;
 	//	Transform jetpack;
@@ -49,6 +54,18 @@ public class Player : MonoBehaviour
 	
 	void Start () 
 	{
+	}
+
+	void Update()
+	{
+		if(transform.position.y < 156)
+			GrassLand.SetActive (true);
+		if(transform.position.y < 112)
+			Jungle.SetActive (true);
+		if(transform.position.y < 71)
+			Desert.SetActive (true);
+		if(transform.position.y < 42)
+			Urban.SetActive (true);
 	}
 	
 	void FixedUpdate ()
