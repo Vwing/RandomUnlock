@@ -8,7 +8,8 @@ public class PokeballPickup : MonoBehaviour {
 	private bool entered;
 	public GameObject playerchar;
 	public Rigidbody2D rb;
-	public CircleCollider2D cc;	
+	public CircleCollider2D cc;
+	//public CircleCollider2D ccColl;
 	public float throwVelx;
 	public float throwVely;
 	public AudioClip picksup;
@@ -39,9 +40,12 @@ public class PokeballPickup : MonoBehaviour {
 			}
 		}
 		if (carried) {
+			playerchar.GetComponent<Player>().colliding.Remove (this.gameObject);
 			if(Input.GetButtonDown ("Fire3"))
 			{
+				//playerchar.GetComponent<Player>().colliding.Add (this.gameObject);
 				carried = false;
+				//ccColl.isTrigger = false;
 				if(playerchar.transform.localScale.x >0)
 				{
 					this.transform.position = playerchar.transform.position + new Vector3(1,3/5,0);

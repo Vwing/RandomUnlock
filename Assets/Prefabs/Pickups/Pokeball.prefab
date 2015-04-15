@@ -106,11 +106,12 @@ MonoBehaviour:
   playerchar: {fileID: 0}
   rb: {fileID: 5053182}
   cc: {fileID: 5853938}
+  ccColl: {fileID: 5853938}
   throwVelx: 10
   throwVely: 1
   picksup: {fileID: 8300000, guid: e8ca89b7010e2b5488673a7d523d1935, type: 3}
   throws: {fileID: 8300000, guid: 49ca813c7c4940a4fa93faaa3e2c2c9c, type: 3}
-  catchs: {fileID: 8300000, guid: 83fcac792e1de8b4d9928ce069b418b8, type: 3}
+  catchs: {fileID: 8300000, guid: 14b1fc4e97e87a14fbe975da68d373a4, type: 3}
 --- !u!212 &21281570
 SpriteRenderer:
   m_ObjectHideFlags: 1

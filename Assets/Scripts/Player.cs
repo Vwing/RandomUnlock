@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+	//public bool externJumpEnabled = true;
+	public List<GameObject> colliding = new List<GameObject>();
 	public GameObject timerControl;
 	public float walkSpeed = 1.0f;
 	//public float jumpForce = 450.0f;
@@ -22,7 +25,7 @@ public class Player : MonoBehaviour
 	public string biome;
 	
 	bool right = true;
-	bool jumpAllowed = false;
+	public bool jumpAllowed = false;
 	bool fallEnabled = false;
 	string oldBiome;
 	float startJumpY;
@@ -61,15 +64,20 @@ public class Player : MonoBehaviour
 			smoke.enableEmission = true;
 		} else
 			smoke.enableEmission = false;
+
+		if(colliding.Count == 0)
+			jumpAllowed = false;
+		else
+			jumpAllowed = true;
 		if(Input.GetButtonDown ("Jump") && jumpAllowed){
 			Jump ();
 			AchievementController.IncrementAchievement("J10");
 		}
 		if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
-		
+
 		if (jumpAllowed == false) {
-			timer = timer+= Time.deltaTime;
+			timer += Time.deltaTime;
 			if(timer > 2)
 			{
 				AchievementController.IncrementAchievement("FS2");
@@ -219,7 +227,8 @@ public class Player : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		jumpAllowed = true;
+		colliding.Add (other.gameObject);
+		//jumpAllowed = true;
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (other.transform);
 		if(biome == "J")
@@ -246,13 +255,14 @@ public class Player : MonoBehaviour
 	
 	void OnCollisionStay2D(Collision2D other)
 	{
-		jumpAllowed = true;
+		//jumpAllowed = true;
 		timer = 0;
 	}
 	
 	void OnCollisionExit2D(Collision2D other)
 	{
-		jumpAllowed = false;
+		//jumpAllowed = false;
+		colliding.Remove (other.gameObject);
 		if(other.gameObject.tag == "MovablePlatform")
 			transform.SetParent (null);
 	}

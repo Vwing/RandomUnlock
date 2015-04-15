@@ -1,12 +1,13 @@
-A;Die5;Die 5 times;5
-A;Die10;Die 10 times;10
 A;J10;Jump 10 times;10
-A;FS2;Fall for 2 seconds;2
 A;FS3;Fall for 3 seconds;3
+J;PMJ;Find and collect two Jungle Monuments;2
+J;SJ;Jump the shark;1
 J;DJ;Die on Jungle Tile;1
 J;WJ;Walk on Jungle Tile;1
 J;PJ;Catch a Jungle Monster;1
 J;FJ;Fall for 4 seconds in Jungle Biome;4
+M;PSM;Find and collect the Mountain Snowman;1
+M;SM;Jump the shark;1
 M;DM;Die on Mountain Tile;1
 M;WM;Walk on 100 Mountain Tiles;100
 M;PM;Catch a Mountain Monster;1
@@ -15,10 +16,13 @@ D;DD;Die on Desert Tile;1
 D;WD;Walk on Desert Tile;1
 D;PD;Catch a Desert Monster;1
 D;FD;Fall for 4 seconds in Desert Biome;4
+U;PBU;Find and collect the briefcase;1
 U;DU;Die on Urban Tile;1
 U;WU;Walk on Urban Tile;1
 U;PU;Catch an Urban Monster;1
 U;FU;Fall for 4 seconds in Urban Biome;4
+G;PAG;Find and collect two apples;2
+G;PSG;Find and collect the Grassland Snowman;1
 G;DG;Die on Grassland Tile;1
 G;WG;Walk on Grassland Tile;1
 G;PG;Catch a Grassland Monster;1

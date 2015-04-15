@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.1080675, y: .00496953726, z: 0}
+  m_LocalPosition: {x: 21.6293716, y: 53.5339966, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,8 +106,12 @@ MonoBehaviour:
   playerchar: {fileID: 0}
   rb: {fileID: 5051522}
   cc: {fileID: 5805838}
+  ccColl: {fileID: 5805838}
   throwVelx: 10
   throwVely: 1
+  picksup: {fileID: 8300000, guid: e8ca89b7010e2b5488673a7d523d1935, type: 3}
+  throws: {fileID: 8300000, guid: 49ca813c7c4940a4fa93faaa3e2c2c9c, type: 3}
+  catchs: {fileID: 8300000, guid: 14b1fc4e97e87a14fbe975da68d373a4, type: 3}
 --- !u!212 &21285080
 SpriteRenderer:
   m_ObjectHideFlags: 1

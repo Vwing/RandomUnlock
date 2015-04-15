@@ -1,0 +1,33 @@
+Initialize engine version: 5.0.1f1 (5a2e8fe35a68)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     896 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.285 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\git\RandomUnlock\exec\FearlessKilla_Data\Managed\System.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 12.972494 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 20919.
+Total: 11.566367 ms (FindLiveObjects: 2.337660 ms CreateObjectMapping: 1.083025 ms MarkObjects: 8.008969 ms  DeleteObjects: 0.135070 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 302.249939 ms
+
+Unloading 142 unused Assets to reduce memory usage. Loaded Objects now: 180.
+Total: 1.846644 ms (FindLiveObjects: 0.049265 ms CreateObjectMapping: 0.052960 ms MarkObjects: 0.433538 ms  DeleteObjects: 1.309237 ms)
+
