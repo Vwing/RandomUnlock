@@ -26,23 +26,23 @@ public class Trap : MonoBehaviour
 		if(!AchievementController.ObjectivesCompleted())
 			return;
 		if(!mRot && player.GetComponent<Player>().biome == "M"){
-			mountainTrap.transform.Rotate (0,0,90);
+			mountainTrap.transform.Rotate (0,0,90,Space.Self);
 			mRot = true;
 		}
 		if(!gRot && player.GetComponent<Player>().biome == "G"){
-			grasslandTrap.transform.Rotate (0,0,90);
+			grasslandTrap.transform.Rotate (0,0,90,Space.Self);
 			gRot = true;
 		}
 		if(!jRot && player.GetComponent<Player>().biome == "J"){
-			jungleTrap.transform.Rotate (0,0,90);
+			jungleTrap.transform.Rotate (0,0,90,Space.Self);
 			jRot = true;
 		}
 		if(!dRot && player.GetComponent<Player>().biome == "D"){
-			desertTrap.transform.Rotate (0,0,90);
+			desertTrap.transform.Rotate (0,0,90,Space.Self);
 			dRot = true;
 		}
 		if(!uRot && player.GetComponent<Player>().biome == "U"){
-			urbanTrap.transform.Rotate (0,0,90);
+			urbanTrap.transform.Rotate (0,0,90,Space.Self);
 			uRot = true;
 		}
 	}

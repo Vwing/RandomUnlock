@@ -11,7 +11,7 @@ public class AchievementController : MonoBehaviour
 	[HideInInspector]
 	public static List<Achievement> Objectives = new List<Achievement>();
 	
-	public static int numAchivementsNeeded = 3;
+	public static int numAchievementsNeeded = 3;
 	
 	public class Achievement 
 	{
@@ -36,6 +36,7 @@ public class AchievementController : MonoBehaviour
 	
 	static void LoadAllAchievements()
 	{
+		FullAchievementList.Clear ();
 		TextAsset achtxt = Resources.Load (AchievementFilePath) as TextAsset;
 		foreach(string line in achtxt.text.Split(new char[1]{'\n'}))
 		{
@@ -53,7 +54,6 @@ public class AchievementController : MonoBehaviour
 				if(count == needed){
 					Objectives[i].unlocked = true;
 				}
-				//Debug.Log (count + ";" + Objectives[i].countNeeded + ": " + Objectives[i].trigger + " " + Objectives[i].description + " " + Objectives[i].unlocked);
 			}
 		}
 	}
@@ -71,6 +71,7 @@ public class AchievementController : MonoBehaviour
 	public static void LoadObjectives(string biome)
 	{
 		AchievementList.Clear();
+		Objectives.Clear ();
 		foreach(Achievement a in FullAchievementList)
 		{
 			if(a.biome == biome || a.biome == "A"){
@@ -84,23 +85,32 @@ public class AchievementController : MonoBehaviour
 	
 	static void GenerateRandomObjectives()
 	{
-		Objectives.Clear();
+		//Objectives.Clear();
 		Shuffle (AchievementList);
-		for(int i = 0; i < numAchivementsNeeded; ++i)
+		for(int i = 0; i < numAchievementsNeeded; ++i)
 			Objectives.Add (AchievementList[i]);
 	}
 	
-	static void Shuffle(List<Achievement> list) {
+	static void Shuffle(List<Achievement> list)
+	{
 		int n = list.Count;
-		//Random rnd = new Random();
-		while (n > 1) {
-			int k = (Random.Range(0, n) % n);
-			n--;
-			Achievement value = list[k];
-			list[k] = list[n];
-			list[n] = value;
+		for (int i = 0; i < n; ++i) {
+			Achievement temp = list[i];
+			int randomIndex = Random.Range(i, n);
+			list[i] = list[randomIndex];
+			list[randomIndex] = temp;
 		}
 	}
+//
+//		int n = list.Count;
+//		//Random rnd = new Random();
+//		while (n > 1) {
+//			int k = (Random.Range(0, n) % n);
+//			n--;
+//			Achievement value = list[k];
+//			list[k] = list[n];
+//			list[n] = value;
+//		}
 	
 	void Awake()
 	{

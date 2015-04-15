@@ -15,7 +15,12 @@ public class PokeballPickup : MonoBehaviour {
 	public AudioClip picksup;
 	public AudioClip throws;
 	public AudioClip catchs;
-	// Use this for initialization
+	private Player playerScript;
+
+	void Awake()
+	{
+		playerScript = playerchar.GetComponent<Player> ();
+	}
 	void Start () {
 		carried = false;
 		entered = false;
@@ -32,11 +37,12 @@ public class PokeballPickup : MonoBehaviour {
 		}
 		if (entered) {
 			if (Input.GetButtonDown ("Fire2")) {
+				if(!carried)
+					AudioSource.PlayClipAtPoint (picksup, this.transform.position);
 				carried = true;
 				rb.velocity =  Vector2.zero;
 				rb.isKinematic=true;
 				cc.isTrigger = true;
-				AudioSource.PlayClipAtPoint (picksup, this.transform.position, 0.4f);
 			}
 		}
 		if (carried) {
@@ -75,21 +81,23 @@ public class PokeballPickup : MonoBehaviour {
 			Destroy (other.gameObject);
 			// Gotcha!
 			rb.velocity = new Vector2(0,5);
-			if (other.transform.position.y < 90 && other.transform.position.y > 59) {
+			if (playerScript.biome == "J") {
 				AchievementController.IncrementAchievement("PJ");
 			}
-			if (other.transform.position.y < 59 && other.transform.position.y > 29) {
+			if (playerScript.biome == "D") {
 				AchievementController.IncrementAchievement("PD");
 			}
-			if (other.transform.position.y < 29 && other.transform.position.y > 0) {
+			if (playerScript.biome == "U") {
 				AchievementController.IncrementAchievement("PU");
 			}
-			if (other.transform.position.y < 148 && other.transform.position.y > 90) {
+			if (playerScript.biome == "G") {
 				AchievementController.IncrementAchievement("PG");
 			}
-			if (other.transform.position.y < 180 && other.transform.position.y > 150) {
+			if (playerScript.biome == "M") {
 				AchievementController.IncrementAchievement("PM");
 			}
+			if(other.gameObject.name == "Duck")
+				AchievementController.IncrementAchievement("PDG");
 			AudioSource.PlayClipAtPoint (catchs, this.transform.position, 9.0f);
 		}
 		

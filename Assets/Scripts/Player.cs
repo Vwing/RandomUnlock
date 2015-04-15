@@ -5,12 +5,13 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
 	//public bool externJumpEnabled = true;
+	[HideInInspector]
 	public List<GameObject> colliding = new List<GameObject>();
 	public GameObject timerControl;
 	public float walkSpeed = 1.0f;
 	//public float jumpForce = 450.0f;
 	public float jetForce = 10.0f;
-	public float jumpSpeed = 16.0f;
+	//public float jumpSpeed = 16.0f;
 	public float maxJumpHeight = 4.0f;
 	public float minJumpHeight = 0.5f;
 	public ParticleSystem smoke;
@@ -21,10 +22,15 @@ public class Player : MonoBehaviour
 	public Transform spawnPoint5;
 	public AudioClip walk;
 	public AudioClip jump;
+	public AudioClip rez;
 	private float timer;
+	private float truffleTimer = 0f;
+	private int truffleCount = 0;
+	[HideInInspector]
 	public string biome;
 	
 	bool right = true;
+	[HideInInspector]
 	public bool jumpAllowed = false;
 	bool fallEnabled = false;
 	string oldBiome;
@@ -36,20 +42,18 @@ public class Player : MonoBehaviour
 	public GameObject Urban;
 	
 	Transform sprite;
-	//	Transform jetpack;
 	Rigidbody2D rb;
 	Animator anim;
-	//	BoxCollider2D coll;
+	Timer guiTimer;
 	
 	void Awake()
 	{
 		biome = "M";
 		oldBiome = biome;
 		sprite = transform.FindChild("Sprite");
-		//		jetpack = transform.FindChild("Jetpack");
 		rb = GetComponent<Rigidbody2D>();
 		anim = sprite.GetComponent<Animator>();
-		//		coll = GetComponent<BoxCollider2D>();
+		guiTimer = timerControl.GetComponent<Timer> ();
 	}
 	
 	void Start () 
@@ -66,22 +70,42 @@ public class Player : MonoBehaviour
 			Desert.SetActive (true);
 		if(transform.position.y < 42)
 			Urban.SetActive (true);
-	}
-	
-	void FixedUpdate ()
-	{
+
+		//increment truffle timer, and check if gotten achievement
+		TruffleShuffle ();
+
+		//Set player biome, and reset timer and objectives if changed
 		SetBiome ();
 		if (biome != oldBiome) {
-			timerControl.GetComponent<Timer>().timeLeft = timerControl.GetComponent<Timer>().startTime;
+			guiTimer.timeLeft = guiTimer.startTime;
 			AchievementController.LoadObjectives(biome);	
 		}
-		LateralMovement();
-		if(Input.GetButton ("Fire1")){
+		oldBiome = biome;
+	}
+
+	bool jetpacksounding = false;
+	void FixedUpdate ()
+	{
+		//Move left and right based on horizontal axis
+		LateralMovement(Input.GetAxis ("Horizontal"));
+
+		//Jetpack and its sound
+		if (Input.GetButton ("Fire1")) {
 			Jetpack ();
 			smoke.enableEmission = true;
-		} else
+			if(!jetpacksounding){
+				GetComponent<AudioSource>().Play();
+				jetpacksounding = true;
+			}
+		} else {
 			smoke.enableEmission = false;
+			if(jetpacksounding){
+				GetComponent<AudioSource>().Pause();
+				jetpacksounding = false;
+			}
+		}
 
+		//Jump
 		if(colliding.Count == 0)
 			jumpAllowed = false;
 		else
@@ -90,41 +114,11 @@ public class Player : MonoBehaviour
 			Jump ();
 			AchievementController.IncrementAchievement("J10");
 		}
-		if(Input.GetButtonUp ("Jump") && fallEnabled)
+		else if(Input.GetButtonUp ("Jump") && fallEnabled)
 			StopJump();
 
-		if (jumpAllowed == false) {
-			timer += Time.deltaTime;
-			if(timer > 2)
-			{
-				AchievementController.IncrementAchievement("FS2");
-			}
-			if(timer > 3)
-			{
-				AchievementController.IncrementAchievement("FS3");
-			}
-			if(timer > 4 && biome == "J")
-			{
-				AchievementController.IncrementAchievement("FJ");
-			}
-			if(timer > 4 && biome == "D")
-			{
-				AchievementController.IncrementAchievement("FD");
-			}
-			if(timer > 4 && biome == "U")
-			{
-				AchievementController.IncrementAchievement("FU");
-			}
-			if(timer > 4 && biome == "G")
-			{
-				AchievementController.IncrementAchievement("FG");
-			}
-			if(timer > 4 && biome == "M")
-			{
-				AchievementController.IncrementAchievement("FM");
-			}
-		}
-		oldBiome = biome;
+		if (jumpAllowed == false)
+			IncrementFallingAchievements();
 	}
 	
 	void SetBiome()
@@ -150,17 +144,45 @@ public class Player : MonoBehaviour
 			biome = "M";
 		}
 	}
-	
-	float xAxis;
-	
-	void LateralMovement()
+
+	void IncrementFallingAchievements()
 	{
-		xAxis = Input.GetAxis ("Horizontal");
-		
-		if (xAxis == 0) {
+		timer += Time.deltaTime;
+		if(timer > 2)
+		{
+			AchievementController.IncrementAchievement("FS2");
+		}
+		if(timer > 3)
+		{
+			AchievementController.IncrementAchievement("FS3");
+		}
+		if(timer > 4 && biome == "J")
+		{
+			AchievementController.IncrementAchievement("FJ");
+		}
+		if(timer > 4 && biome == "D")
+		{
+			AchievementController.IncrementAchievement("FD");
+		}
+		if(timer > 4 && biome == "U")
+		{
+			AchievementController.IncrementAchievement("FU");
+		}
+		if(timer > 4 && biome == "G")
+		{
+			AchievementController.IncrementAchievement("FG");
+		}
+		if(timer > 4 && biome == "M")
+		{
+			AchievementController.IncrementAchievement("FM");
+		}
+	}
+	
+	void LateralMovement(float xAxis)
+	{
+		if (xAxis == 0)
 			anim.enabled = false;
-			
-		}else
+		else
 			anim.enabled = true;
 		
 		if(xAxis > 0 && !right || xAxis < 0 && right)
@@ -168,7 +190,6 @@ public class Player : MonoBehaviour
 		
 		Vector3 walkDirection = new Vector3(xAxis,0,0);
 		transform.Translate(walkDirection * walkSpeed * Time.deltaTime);
-		
 		
 	}
 	
@@ -194,7 +215,7 @@ public class Player : MonoBehaviour
 		{
 			transform.position = spawnPoint5.position;
 		}
-		
+		AudioSource.PlayClipAtPoint (rez, this.transform.position);
 	}
 	
 	void Jump()
@@ -235,6 +256,22 @@ public class Player : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+
+		++truffleCount;
+	}
+
+	void TruffleShuffle()
+	{
+		//Increment truffle time
+		truffleTimer += Time.deltaTime;
+		if (truffleTimer > 3) {
+			truffleTimer = 0;
+			truffleCount = 0;
+		}
+
+		//Give achievement if gotten
+		if (truffleCount > 11)
+			AchievementController.IncrementAchievement ("TS");
 	}
 	
 	void Jetpack()
