@@ -1,6 +1,6 @@
 A;J10;Jump 10 times;10
 A;FS3;Fall for 3 seconds;3
-A;TS;Do the truffle shuffle! (turn left to right really fast);1
+A;TS;Do the truffle shuffle! (turn left and right really fast);1
 J;PMJ;Find and collect two Jungle Monuments;2
 J;SJ;Jump the shark;1
 J;DJ;Die on Jungle Tile;1
